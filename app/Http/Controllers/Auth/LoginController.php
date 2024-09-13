@@ -38,3 +38,12 @@ class LoginController extends Controller
         $this->middleware('auth')->only('logout');
     }
 }
+
+
+// @if(Auth::check())
+//     <p>Bienvenido, {{ Auth::user()->name }}</p>
+//     <!-- Contenido que deseas mostrar solo a usuarios autenticados -->
+// @else
+//     <p>Bienvenido, invitado. <a href="{{ route('login') }}">Inicia sesión</a> o <a href="{{ route('register') }}">Regístrate</a></p>
+//     <!-- Contenido que deseas mostrar a todos los usuarios -->
+// @endif
