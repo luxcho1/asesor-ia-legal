@@ -6,25 +6,28 @@
 
 # Proyecto - AsesorIA Legal
 
-
 Este proyecto es un chatbot donde se pueden realizar consultas juridicas y sobre leyes de Chile mediante uso de inteligencia artificial.
+
+## VERSION 1.0 CHATBOT NO IMPLEMENTADO. PARA USAR CHATBOT REVISAR VERSION BETA
+https://github.com/luxcho1/asesoria-beta
+
+## Website proyecto
+
+https://asesorialegal.site/
+
 ## Autores
 
 - [Luis Muñoz](https://github.com/luxcho1)
 - [Tomas Moreno](https://github.com/Tomi880)
 - [Gabriel Toledo](https://github.com/Gabro22)
 
-## La URL de la pagina es la siguiente
-
-https://asesorialegal.site/
-
 ## Instalacion de forma local
-
 #### Programas necesarios:
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Laragon](https://laragon.org/download/index.html)
 - [phpMyAdmin](https://www.phpmyadmin.net/downloads/)
 - [Composer](https://getcomposer.org/download/)
+- [Node JS](https://nodejs.org/en)
 - [Git](https://git-scm.com/downloads)
 - [API keys OpenAI](https://platform.openai.com/api-keys)
 
@@ -49,26 +52,28 @@ En Laragon abrirmos Base de Datos y en la pagina de phpmyadmin le damos a click 
 
 En la siguiente ubicacion `C:\laragon\www\asesor-ia-legal` ya sea CMD de Windows o en la terminal de Visual Studio Code ejecutar los siguientes comandos:
 
-
 ```bash
   composer install
 ```
-```bash
-  composer require openai-php/client
-```
-```bash
-  composer require guzzlehttp/guzzle
-```
+
 ```bash
   cp .env.example .env
 ```
 ```bash
   php artisan key:generate
 ```
+```bash
+   npm install
+```
+*Para creacion de Chatbot y uso de OpenAI* 
+```bash
+  composer require openai-php/client
+```
+```bash
+  composer require guzzlehttp/guzzle
+```
 
 El archivo `.env` debe quedar de la siguiente forma:
-
-
 ```bash
 APP_NAME="AsesorIA Legal" (Opcional)
 APP_ENV=local
@@ -91,12 +96,18 @@ Una vez creada la conexion con la base de datos ejecutamos el siguiente comando:
   php artisan migrate:fresh --seed
 ```
 ## Ejecutar
-
-Para levantar el proyecto ejecutar el siguiente comando:
+Solo la primera vez ejecutar:
+```bash
+  npm run build
+```
+Luego para ejecutar el proyecto ejecutar el siguiente comando:
 
 ```bash
   php artisan serve
 ```
+## Licencia
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
 
 
