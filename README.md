@@ -108,11 +108,3 @@ Luego para ejecutar el proyecto ejecutar el siguiente comando:
 ## Licencia
 
 [MIT](https://choosealicense.com/licenses/mit/)
-
-
-
-## Licencia
-
-Este proyecto es de uso gratuito.
-
-
