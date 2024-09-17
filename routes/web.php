@@ -19,4 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+//navbar
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/chatbot', function () {return view('chatbot');});
+Route::get('/nosotros', function () {return view('nosotros');});
+Route::get('/trabaja-con-nosotros', function () {return view('trabaja-con-nosotros');});

@@ -1,11 +1,9 @@
 @extends('layouts.app')
-
+@vite(['resources/js/home.js'])  <!-- Adjuntar ruta css -->
 @section('content')
-<div class="row">
-    <div class="col"></div>
-    <div class="col" style="text-align: center">
-        <h1>Este es el inicio</h1>
-    </div>
-    <div class="col"></div>
-</div>
+<body>
+<h1>
+    hola
+</h1>
+</body>
 @endsection
