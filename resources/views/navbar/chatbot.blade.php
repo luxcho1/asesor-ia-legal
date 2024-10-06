@@ -9,11 +9,13 @@
                 <div class="card-body">
                 <h5 class="card-title">Chatbot Central</h5>
                 <p class="card-text">Bienvenido al Chatbot Central. Selecciona una especialidad para recibir asesoría legal.</p>
-                <a href="{{ url('/chatbot/familiar') }}" class="btn btn-primary">Ir al Chatbot</a>
+                <a href="{{ url('/chatbot/central') }}" class="btn btn-primary">Ir al Chatbot</a>
                 </div>
             </div>
             </div>
         </div>
+
+        @auth
         <div class="row mt-4">
             <div class="col-md-4 mb-4">
                 <div class="card text-center">
@@ -76,6 +78,13 @@
                 </div>
             </div>
         </div>
+        @endauth
     </div>
+    <br>
+    @guest
+        <h5 style="text-align: center">
+            ¿Quieres una experiencia mas personalizada? Inicia sesion para sacarle el mayor provecho a nuestro chatbot.
+        </h5>
+    @endguest
 </body>
 @endsection

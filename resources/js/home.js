@@ -2,5 +2,5 @@
 import '../css/home.css';
 
 //Se coloca el codigo javascript de la vista home
-alert("Hello World");  
+// alert("Hello World");  
 

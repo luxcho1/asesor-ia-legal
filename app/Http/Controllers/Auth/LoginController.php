@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -36,6 +37,18 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        // Si el correo del usuario contiene "@asesorialegal.com"
+        if (strpos($user->email, '@asesorialegal.com') !== false) {
+            // Redirigir a la vista 'dashboard'
+            return redirect()->route('abogado.dashboard');
+        }
+
+        // Redirigir a la ruta por defecto si no es ese usuario
+        return redirect()->intended($this->redirectPath());
     }
 }
 
