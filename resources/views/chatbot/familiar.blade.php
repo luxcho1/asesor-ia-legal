@@ -1,15 +1,46 @@
 @extends('layouts.app')
 @section('content')
-<body>
-<div class="row">
-    <div class="col"></div>
-    <div class="col" style="text-align: center">
-        <h1>
-            Este es el chatbot familiar
-        </h1>
-        <a href="{{ url('/chatbot') }}" class="btn btn-primary">Ir al Chatbot</a>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-dark text-white text-center">
+                    <h3>Chatbot de Asesoría en Leyes Familiares</h3>
+                </div>
+                <div id="chat-history" class="card-body chat-box" style="max-height: 300px; overflow-y: auto;">
+                    @guest
+                        <div class="alert alert-warning" role="alert">
+                            {{ __('Please log in to use the chatbot and save your chat history.') }}
+                        </div>
+                    @else
+                        @if (!empty($history))
+                            @foreach ($history as $entry)
+                                <div class="mb-3">
+                                    <p><strong>Usuario:</strong> {{ $entry->user_message }}</p>
+                                    <p><strong>Chatbot:</strong> {{ $entry->bot_reply }}</p>
+                                </div>
+                            @endforeach
+                        @endif
+                        @if (isset($userMessage) && isset($botReply))
+                            <div class="mb-3">
+                                <p><strong>Usuario:</strong> {{ $userMessage }}</p>
+                                <p><strong>Chatbot:</strong> {{ $botReply }}</p>
+                            </div>
+                        @endif
+                    @endguest
+                </div>
+                <div class="card-footer">
+                    <form action="{{ route('chatbot.familiar') }}" method="POST" class="d-flex">
+                        @csrf
+                        <input type="text" name="askText" class="form-control me-2" placeholder="Escribe tu mensaje..." required>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a class="btn btn-secondary" href="{{ url('/chatbot') }}" id="regresar" name="regresar">Volver a Inicio</a>
+            </div>
+        </div>
     </div>
-    <div class="col"></div>
 </div>
-</body>
 @endsection
