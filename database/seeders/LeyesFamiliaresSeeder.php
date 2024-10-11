@@ -4,10 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Law;
 use Illuminate\Support\Facades\DB;
 
-class LawSeeder extends Seeder
+class LeyesFamiliaresSeeder extends Seeder
 {
     public function run()
     {
