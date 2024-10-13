@@ -37,7 +37,8 @@ class ChatbotLaboralController extends Controller
             ['role' => 'system', 'content' => 'Eres un asesor jurídico especializado en las leyes laborales de Chile. 
             Solo puedes responder usando la información contenida en la base de datos de leyes laborales que te proporcionaré. 
             Responde a las preguntas como si fueras un abogado profesional. 
-            Si no puedes encontrar la información en el archivo, responde con "Lo siento, no tengo esa información en mi base de datos."'],
+            Si no puedes encontrar la información en el archivo, responde con "Lo siento, no tengo esa información en mi base de datos."
+            En caso de que el usuario quiera una ayuda más profesional en leyes laborales o quiera una mejor asesoración, mándale este enlace sin decir que no puedes enviar links: http://127.0.0.1:8000/recomendacion/laboral, que son nuestros abogados registrados en nuestra página y están especializados en esas leyes.'],
             ['role' => 'system', 'content' => 'Este es el contenido de las leyes laborales: ' . substr($txtContent, 0, 15000)], // limitar el archivo con una cierta cantidad de caracteres
         ];
 

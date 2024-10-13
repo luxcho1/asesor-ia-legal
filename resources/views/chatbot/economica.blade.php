@@ -24,7 +24,7 @@
                         @if (isset($userMessage) && isset($botReply))
                             <div class="mb-3">
                                 <p><strong>Usuario:</strong> {{ $userMessage }}</p>
-                                <p><strong>Chatbot:</strong> {{ $botReply }}</p>
+                                <p><strong>Chatbot:</strong> <span id="botReply">{{ $botReply }}</p>
                             </div>
                         @endif
                     @endguest
