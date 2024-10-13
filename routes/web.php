@@ -41,6 +41,11 @@ Route::get('/dashboard-abogado', function () {return view('abogado.dashboard');}
 
 //Recomendacion de abogados
 Route::get('/recomendacion/civil', function () {return view('recomendacion-abogado.civil');});
+Route::get('/recomendacion/economica', function () {return view('recomendacion-abogado.economica');});
+Route::get('/recomendacion/familiar', function () {return view('recomendacion-abogado.familiar');});
+Route::get('/recomendacion/laboral', function () {return view('recomendacion-abogado.laboral');});
+Route::get('/recomendacion/penal', function () {return view('recomendacion-abogado.penal');});
+Route::get('/recomendacion/tributaria', function () {return view('recomendacion-abogado.tributaria');});
 
 //Chatbot Central
 Route::get('/chatbot/central', function () {return view('chatbot.central');});
