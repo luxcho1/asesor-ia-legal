@@ -1,6 +1,7 @@
-//Se importa el archivo css de la vista home
+import './bootstrap';
 import '../css/home.css';
 
-//Se coloca el codigo javascript de la vista home
-// alert("Hello World");  
+// document.addEventListener('DOMContentLoaded', () => {
+//     console.log('Home.js cargado correctamente');
+// });
 

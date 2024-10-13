@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@vite(['resources/js/home.js'])  <!-- Adjuntar ruta css -->
 @section('content')
+@vite(['resources/css/home.css', 'resources/js/home.js'])
 <body>
 <h1 style="text-align: center">
     Este es el home de la pagina
