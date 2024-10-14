@@ -47,6 +47,11 @@ class LoginController extends Controller
             return redirect()->route('abogado.dashboard');
         }
 
+        if (strpos($user->email, 'admin@admin.com') !== false) {
+            // Redirigir a la vista 'dashboard'
+            return redirect()->route('admin.dashboard');
+        }
+
         // Redirigir a la ruta por defecto si no es ese usuario
         return redirect()->intended($this->redirectPath());
     }

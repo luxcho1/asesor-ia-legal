@@ -11,25 +11,25 @@
     </div>
     <div class="col"></div>
 </div>
-<div class="container mt-5">
-    <div class="row">
-        @for ($i = 1; $i <= 6; $i++)
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="d-flex justify-content-center mt-3">
-                        <img src="https://randomuser.me/api/portraits/men/{{ $i }}.jpg" class="card-img-top" alt="Imagen del Usuario {{ $i }}" style="width: 100px; height: 100px; object-fit: cover;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Abogado {{ $i }}</h5>
-                        <p class="card-text">Definición breve del caso legal del abogado {{ $i }}.</p>
-                        <p class="card-text"><strong>Nombre:</strong> Nombre del Usuario {{ $i }}</p>
-                        <p class="card-text"><strong>Contacto:</strong> +123456789{{ $i }}</p>
-                        <p class="card-text"><strong>Cobro:</strong> $500.000{{ $i }}</p>
-                    </div>
+
+<div class="col-md-3 mb-4">
+    @foreach ($abogados as $abogado)
+            @if ($abogado->especialidad === 'Civil')
+            <div class="card">
+                <img class="img-thumbnail img-fluid" src="{{ asset('storage'.'/'.$abogado->imagen) }}" width="100" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $abogado->nombre }}</h5>
+                    <p class="card-text"><strong>Especialidad:</strong> {{ $abogado->especialidad }}</p>
+                    <p class="card-text"><strong>Email:</strong> {{ $abogado->email }}</p>
+                    <p class="card-text"><strong>Teléfono:</strong> {{ $abogado->telefono }}</p>
+                    <p class="card-text"><strong>Sueldo:</strong> {{ $abogado->sueldo }}</p>
+                    <p class="card-text"><strong>Biografía:</strong> {{ $abogado->biografia }}</p>
+                    <a href="{{ route('abogados.show', $abogado->id) }}" class="btn btn-primary">Contactar</a>
                 </div>
             </div>
-        @endfor
-    </div>
+            @endif
+        @endforeach  
 </div>
 </body>
 @endsection
+
