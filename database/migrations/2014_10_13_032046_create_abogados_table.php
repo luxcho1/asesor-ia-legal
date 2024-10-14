@@ -11,15 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('abogados', function (Blueprint $table) {
             $table->id();
+            $table->string('imagen');
+            $table->unsignedBigInteger('rut_abogado')->unique();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('rut_abogado')->nullable();
-            $table->rememberToken();
+            $table->string('especialidad');
+            $table->string('email');
+            $table->string('telefono');
+            $table->string('sueldo');
+            $table->string('biografia');
             $table->timestamps();
+
         });
     }
 
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('abogados');
     }
 };

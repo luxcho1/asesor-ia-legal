@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AbogadoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,11 @@ Auth::routes();
 //Home
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//admin
+Route::get('/dashboard', function () {return view('admin.dashboard');})->name('admin.dashboard');;
+Route::resource('abogados', AbogadoController::class);
+
+
 //navbar
 Route::get('/chatbot', function () {return view('navbar.chatbot');});
 Route::get('/nosotros', function () {return view('navbar.nosotros');});
@@ -32,7 +38,9 @@ Route::get('/contacto', function () {return view('navbar.contacto');});
 Route::get('/dashboard-abogado', function () {return view('abogado.dashboard');})->name('abogado.dashboard');
 
 //Recomendacion de abogados
-Route::get('/recomendacion/civil', function () {return view('recomendacion-abogado.civil');});
+Route::get('/recomendacion/{especialidad}', [AbogadoController::class, 'filtrarPorEspecialidad'])
+    ->name('recomendacion.especialidad');
+    
 //Chatbots
 Route::get('/chatbot/central', function () {return view('chatbot.central');});
 Route::get('/chatbot/civil', function () {return view('chatbot.civil');});
