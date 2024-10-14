@@ -2,7 +2,7 @@
 @section('content')
 <body>
 <h1 style="text-align: center">
-    Bienvenido Claudio abogado
+    Bienvenido abogado
 </h1>
 <div class="container mt-5">
     <div class="row">

@@ -5,7 +5,8 @@
         @foreach($abogados as $abogado)
             <div class="col-md-3 mb-4"> {{-- 4 cards por fila en pantallas medianas y superiores --}}
                 <div class="card" style="align-content: center">
-                    <img class="img-thumbnail img-fluid" src="{{ asset('storage'.'/'.$abogado->imagen) }}" width="100" alt="">
+                    <img class="img-thumbnail img-fluid" src="{{ asset('storage/' . $abogado->imagen) }}" width="100" alt="">
+
                     <div class="card-body">
                         <h5 class="card-title">{{ $abogado->name }}</h5>
                         <p class="card-text"><strong>Especialidad:</strong> {{ $abogado->especialidad }}</p>
@@ -19,6 +20,7 @@
                 </div>
             </div>
         @endforeach
+        <a href="{{ url('/dashboard') }}" class="btn btn-primary btn-lg">Regresar</a>
     </div>
     {{-- Paginación --}}
     {{-- {{ $abogados->links() }} --}}

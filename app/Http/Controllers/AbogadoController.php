@@ -55,9 +55,14 @@ class AbogadoController extends Controller
             'required' => 'El :attribute es requerido',
         ];
 
-        if($request->hasFile('imagen')){
-            $datosProducto['imagen']=$request->file('imagen')->store('uploads','public');
+        if ($request->hasFile('imagen')) {
+            // Guarda la imagen en 'storage/app/public/uploads' y devuelve la ruta relativa
+            $rutaImagen = $request->file('imagen')->store('uploads', 'public');
+            
+            // Guarda la ruta de la imagen (ej. 'uploads/nombre_imagen.jpg') en lugar de la ruta temporal
+            $datosProducto['imagen'] = $rutaImagen;
         }
+        
 
         $this->validate($request, $campos, $mensaje);
         $usuario = User::create([
@@ -70,7 +75,7 @@ class AbogadoController extends Controller
         $datosAbogado['id'] = $usuario->id; 
 
         Abogado::insert($datosAbogado);
-        return redirect()->route('abogados.index');
+        return redirect()->route('admin.dashboard');
     }
         
 
