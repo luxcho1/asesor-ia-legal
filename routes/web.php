@@ -74,3 +74,10 @@ Route::post('/chatbot/penal', [ChatbotPenalController::class, 'submit'])->name('
 //Chatbot Tributario
 Route::get('/chatbot/tributaria', function () {return view('chatbot.tributaria');});
 Route::post('/chatbot/tributaria', [ChatbotTributarioController::class, 'submit'])->name('chatbot.tributaria');
+
+Route::get('/test-openai', function () {
+    return response()->json([
+        'api_key' => env('OPENAI_API_KEY'), // Esto debería devolver tu clave
+        'config' => config('openai.api_key'), // Esto debería devolver la misma clave
+    ]);
+});
