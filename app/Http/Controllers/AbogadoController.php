@@ -16,6 +16,15 @@ class AbogadoController extends Controller
         $datos['abogados'] = Abogado::paginate(1000);
         return view('admin.abogados.index', $datos);
     }
+    
+    public function filtrarPorEspecialidad($especialidad)
+{
+    // Filtrar los abogados por la especialidad proporcionada
+    $datos['abogados'] = Abogado::where('especialidad', $especialidad)->paginate(1000);
+    
+    // Retornar la vista con los abogados filtrados
+    return view('admin.abogados.index', $datos);
+}
 
     /**
      * Show the form for creating a new resource.
@@ -34,7 +43,6 @@ class AbogadoController extends Controller
         //
         $campos=[
             'imagen'         => '|image|mimes:jpg,jpeg,png|max:2048',
-            'rut_abogado'    => 'required|numeric|max:999999999',
             'name'         => 'required|string|max:100',
             'especialidad'   => 'required|string|max:100',
             'email'          => 'required|string|max:99999',
@@ -52,14 +60,14 @@ class AbogadoController extends Controller
         }
 
         $this->validate($request, $campos, $mensaje);
-        $datosAbogado = request()->except('_token');
-
         $usuario = User::create([
+            'rut_abogado'   => $request->rut_abogado,
             'name'          => $request->name,
             'email'         => $request->email,
-            'password'      => Hash::make($request->email), 
-            'rut_abogado'   => $request->rut_abogado,
+            'password'      => Hash::make($request->email)
         ]);
+        $datosAbogado = request()->except('_token');
+        $datosAbogado['id'] = $usuario->id; 
 
         Abogado::insert($datosAbogado);
         return redirect()->route('abogados.index');

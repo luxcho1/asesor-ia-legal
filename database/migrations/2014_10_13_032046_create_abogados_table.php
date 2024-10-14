@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('abogados', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('id')->primary(); // Usar el ID de la tabla users como clave primaria
             $table->string('imagen');
             $table->unsignedBigInteger('rut_abogado')->unique();
             $table->string('name');
@@ -22,6 +22,9 @@ return new class extends Migration
             $table->string('sueldo');
             $table->string('biografia');
             $table->timestamps();
+
+            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
+
 
         });
     }
