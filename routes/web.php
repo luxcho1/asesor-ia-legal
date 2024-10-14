@@ -45,6 +45,9 @@ Route::get('/contacto', function () {return view('navbar.contacto');});
 //Abogado
 Route::get('/dashboard-abogado', function () {return view('abogado.dashboard');})->name('abogado.dashboard');
 
+Route::get('/recomendacion/{especialidad}', [AbogadoController::class, 'filtrarPorEspecialidad'])
+    ->name('recomendacion.especialidad');
+
 //Recomendacion de abogados
 Route::get('/recomendacion/civil', function () {return view('recomendacion-abogado.civil');});
 Route::get('/recomendacion/economica', function () {return view('recomendacion-abogado.economica');});
@@ -53,9 +56,6 @@ Route::get('/recomendacion/laboral', function () {return view('recomendacion-abo
 Route::get('/recomendacion/penal', function () {return view('recomendacion-abogado.penal');});
 Route::get('/recomendacion/tributaria', function () {return view('recomendacion-abogado.tributaria');});
 
-//Chatbot Central
-Route::get('/recomendacion/{especialidad}', [AbogadoController::class, 'filtrarPorEspecialidad'])
-    ->name('recomendacion.especialidad');
     
 //Chatbots
 Route::get('/chatbot/central', function () {return view('chatbot.central');});
