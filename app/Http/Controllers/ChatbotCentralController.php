@@ -31,14 +31,15 @@ class ChatbotCentralController extends Controller
         // Recuperar el historial de consultas del usuario si está autenticado
         $history = [];
         if ($userId) {
-            $history = DB::table('chat_histories_central')
+            $history = DB::table('chat_historial')
                 ->where('user_id', $userId)
+                ->where('especializacion', 'Central')
                 ->orderBy('created_at', 'asc')
-                ->get(['user_message', 'bot_reply'])
+                ->get(['Conversacion', 'bot_reply'])
                 ->toArray();
 
             foreach ($history as $entry) {
-                $messages[] = ['role' => 'user', 'content' => $entry->user_message];
+                $messages[] = ['role' => 'user', 'content' => $entry->Conversacion];
                 $messages[] = ['role' => 'assistant', 'content' => $entry->bot_reply];
             }
         }
@@ -60,9 +61,11 @@ class ChatbotCentralController extends Controller
 
             // Guardar la conversación en la base de datos
             if ($userId) {
-                DB::table('chat_histories_central')->insert([
+                DB::table('chat_historial')->insert([
                     'user_id' => $userId,
-                    'user_message' => $userMessage,
+                    'fecha' => now(),
+                    'especializacion' => 'central',
+                    'Conversacion' => $userMessage,
                     'bot_reply' => $botReply,
                     'created_at' => now(),
                     'updated_at' => now()

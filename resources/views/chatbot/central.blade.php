@@ -12,7 +12,7 @@
                     @if (!empty($history))
                         @foreach ($history as $entry)
                             <div class="mb-3">
-                                <p><strong>Usuario:</strong> {{ $entry->user_message }}</p>
+                                <p><strong>Usuario:</strong> {{ $entry->Conversacion }}</p>
                                 <p><strong>Chatbot:</strong> {{ $entry->bot_reply }}</p>
                             </div>
                         @endforeach

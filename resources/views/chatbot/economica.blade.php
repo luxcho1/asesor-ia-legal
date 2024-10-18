@@ -16,7 +16,7 @@
                         @if (!empty($history))
                             @foreach ($history as $entry)
                                 <div class="mb-3">
-                                    <p><strong>Usuario:</strong> {{ $entry->user_message }}</p>
+                                    <p><strong>Usuario:</strong> {{ $entry->Conversacion }}</p>
                                     <p><strong>Chatbot:</strong> {{ $entry->bot_reply }}</p>
                                 </div>
                             @endforeach
@@ -39,6 +39,22 @@
             </div>
             <div class="text-center mt-4">
                 <a class="btn btn-secondary" href="{{ url('/chatbot') }}" id="regresar" name="regresar">Volver a Inicio</a>
+            </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center mt-5">
+            <div class="card shadow-sm" style="width: 22rem; border-radius: 12px; overflow: hidden;">
+              <img 
+                src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqVTDYk3uT9o7vDSCoLY74wTRfwq5Hd0XyP93qoXda_bSj2JoOe--8dVxKUIOodX6WX6-HGPEuOdEfEpIDwx0DwMnqCKwCHxPUB_SdBwm8Y15qTTjbaFzZzyjBIUhMllCWrVsPAMx51qUC4oCnm2ml5R8iNsKDMg41hGi9_ZGkFc-7JVJFOzFaBAe9/s587/saul-goodman.webp" 
+                class="card-img-top" 
+                alt="Abogado Especialista">
+              <div class="card-body text-center">
+                <p class="card-text text-muted mb-4">
+                  ¿Quieres conocer a nuestros primeros abogados especialistas en asesoría Economica?
+                </p>
+                <a href="{{ url('/recomendacion/economica') }}" class="btn btn-outline-primary">
+                  Más Información
+                </a>
+              </div>
             </div>
         </div>
     </div>

@@ -37,22 +37,22 @@ class ChatbotTributarioController extends Controller
             ['role' => 'system', 'content' => 'Eres un asesor jurídico especializado en las leyes tributarias de Chile. 
             Solo puedes responder usando la información contenida en la base de datos de leyes tributarias que te proporcionaré. 
             Responde a las preguntas como si fueras un abogado profesional. 
-            Si no puedes encontrar la información en el archivo, responde con "Lo siento, no tengo esa información en mi base de datos."
-            En caso de que el usuario quiera una ayuda más profesional en leyes tributarias o quiera una mejor asesoración, mándale este enlace sin decir que no puedes enviar links: http://127.0.0.1:8000/recomendacion/tributaria, que son nuestros abogados registrados en nuestra página y están especializados en esas leyes.'],
+            Si no puedes encontrar la información en el archivo, responde con "Lo siento, no tengo esa información en mi base de datos."'],
             ['role' => 'system', 'content' => 'Este es el contenido de las leyes tributarias: ' . substr($txtContent, 0, 20000)], // limitar el archivo con una cierta cantidad de caracteres
         ];
 
         // Recuperar el historial de consultas del usuario si está autenticado
         $history = [];
         if ($userId) {
-            $history = DB::table('chat_histories_tributario')
+            $history = DB::table('chat_historial')
                 ->where('user_id', $userId)
+                ->where('especializacion', 'Tributario')
                 ->orderBy('created_at', 'asc')
-                ->get(['user_message', 'bot_reply'])
+                ->get(['Conversacion', 'bot_reply'])
                 ->toArray();
 
             foreach ($history as $entry) {
-                $messages[] = ['role' => 'user', 'content' => $entry->user_message];
+                $messages[] = ['role' => 'user', 'content' => $entry->Conversacion];
                 $messages[] = ['role' => 'assistant', 'content' => $entry->bot_reply];
             }
         }
@@ -73,9 +73,11 @@ class ChatbotTributarioController extends Controller
 
         // Guardar la conversación en la base de datos
         if ($userId) {
-            DB::table('chat_histories_tributario')->insert([
+            DB::table('chat_historial')->insert([
                 'user_id' => $userId,
-                'user_message' => $userMessage,
+                'fecha' => now(),
+                'especializacion' => 'Tributario',
+                'Conversacion' => $userMessage,
                 'bot_reply' => $botReply,
                 'created_at' => now(),
                 'updated_at' => now()
