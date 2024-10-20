@@ -42,12 +42,12 @@
                 <h5>Especialidad</h5>
                 <select class="form-control @error('especialidad') is-invalid @enderror" name="especialidad" id="especialidad" required>
                     <option value="">Selecciona una especialidad</option>
-                    <option value="Civil" {{ (isset($abogado->especialidad) && $abogado->especialidad == 'Civil') ? 'selected' : '' }}>Civil</option>
-                    <option value="Economico" {{ (isset($abogado->especialidad) && $abogado->especialidad == 'Economico') ? 'selected' : '' }}>Económico</option>
-                    <option value="Familiar" {{ (isset($abogado->especialidad) && $abogado->especialidad == 'Familiar') ? 'selected' : '' }}>Familiar</option>
-                    <option value="Laboral" {{ (isset($abogado->especialidad) && $abogado->especialidad == 'Laboral') ? 'selected' : '' }}>Laboral</option>
-                    <option value="Penal" {{ (isset($abogado->especialidad) && $abogado->especialidad == 'Penal') ? 'selected' : '' }}>Penal</option>
-                    <option value="Tributaria" {{ (isset($abogado->especialidad) && $abogado->especialidad == 'Tributaria') ? 'selected' : '' }}>Tributaria</option>
+                    <option value="Civil" {{ (old('especialidad', isset($abogado->especialidad) ? $abogado->especialidad : '') == 'Civil') ? 'selected' : '' }}>Civil</option>
+                    <option value="Economico" {{ (old('especialidad', isset($abogado->especialidad) ? $abogado->especialidad : '') == 'Economico') ? 'selected' : '' }}>Económico</option>
+                    <option value="Familiar" {{ (old('especialidad', isset($abogado->especialidad) ? $abogado->especialidad : '') == 'Familiar') ? 'selected' : '' }}>Familiar</option>
+                    <option value="Laboral" {{ (old('especialidad', isset($abogado->especialidad) ? $abogado->especialidad : '') == 'Laboral') ? 'selected' : '' }}>Laboral</option>
+                    <option value="Penal" {{ (old('especialidad', isset($abogado->especialidad) ? $abogado->especialidad : '') == 'Penal') ? 'selected' : '' }}>Penal</option>
+                    <option value="Tributaria" {{ (old('especialidad', isset($abogado->especialidad) ? $abogado->especialidad : '') == 'Tributaria') ? 'selected' : '' }}>Tributaria</option>
                 </select>
                 @error('especialidad')
                     <div class="invalid-feedback">
@@ -55,6 +55,7 @@
                     </div>
                 @enderror
             </div>
+            
             
             <div class="form-group">
                 <h5>Email</h5>

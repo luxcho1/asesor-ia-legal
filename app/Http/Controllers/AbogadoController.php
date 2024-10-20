@@ -159,13 +159,27 @@ class AbogadoController extends Controller
 
     public function enviarSolicitud(Request $request, $id)
     {
-        // Validar los datos del formulario
-        $request->validate([
+        $campos = [
             'nombre' => 'required|string|max:255',
-            'telefono' => 'required|string|max:15',
-            'correo' => 'required|email|max:255',
+            'telefono' => 'required|numeric|',
+            'correo' => 'required|email|max:255|unique:solicitudes_asistencia,correo',
             'descripcion' => 'required|string|max:1000',
-        ]);
+        ];
+
+        $mensaje = [
+            'required' => 'El :attribute es requerido',
+            'numeric' => 'El :attribute debe ser un número',
+            'max' => 'El :attribute no debe superar :max caracteres',
+            'correo' => 'El :attribute debe ser un correo electrónico válido',
+            'unique' => 'El :attribute ya realizo una solicitud',
+        ];
+        
+
+        // Definir las reglas de validación
+        
+        // dd($request->all());
+
+        $this->validate($request, $campos, $mensaje);
 
         SolicitudAsistencia::create([
             'abogado_id' => $id, // Asegúrate de que esta línea esté aquí

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('abogado_id'); // Referencia al abogado
             $table->string('nombre');
             $table->string('telefono');
-            $table->string('correo');
+            $table->string('correo')->unique();
             $table->text('descripcion');
             $table->timestamps();
 
