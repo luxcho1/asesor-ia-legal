@@ -18,10 +18,12 @@
             @if ($abogado->especialidad === 'Civil')
                 <div class="col d-flex">
                     <div class="card h-100 w-100">
-                        <img class="card-img-top" 
+                        <img class="img-thumbnail img-fluid" src="{{ asset('storage/' . $abogado->imagen) }}" width="100" alt="Imagen del Abogado">
+
+                        {{-- <img class="card-img-top" 
                              src="{{ asset('storage/'.$abogado->imagen) }}" 
                              alt="{{ $abogado->nombre }}" 
-                             style="height: 200px; object-fit: cover;">
+                             style="height: 200px; object-fit: cover;"> --}}
                         
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title text-center">{{ $abogado->nombre }}</h5>
