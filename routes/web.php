@@ -43,7 +43,27 @@ Route::get('/trabaja-con-nosotros', function () {return view('navbar.trabaja_con
 Route::get('/contacto', function () {return view('navbar.contacto');});
 
 //Abogado
-Route::get('/dashboard-abogado', function () {return view('abogado.dashboard');})->name('abogado.dashboard');
+Route::get('/recomendacion/civil/{id}/solicitud', [AbogadoController::class, 'mostrarFormulario'])->name('abogados.solicitud');
+Route::post('/abogados/{id}/solicitud', [AbogadoController::class, 'enviarSolicitud'])->name('abogados.enviarSolicitud');
+
+Route::get('/dashboard-abogado/{id}', [AbogadoController::class, 'mostrarDashboard'])->name('abogado.dashboard');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Route::get('/dashboard-abogado', function () {return view('abogado.dashboard');})->name('abogado.dashboard');
+
 
 Route::get('/recomendacion/{especialidad}', [AbogadoController::class, 'filtrarPorEspecialidad'])
     ->name('recomendacion.especialidad');

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Abogado;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -41,13 +43,15 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
+        $abogado = Abogado::where('id', $user->id)->first(); // Ajusta esto según tu estructura de datos
         // Si el correo del usuario contiene "@asesorialegal.com"
         if (strpos($user->email, '@asesorialegal.com') !== false) {
             // Redirigir a la vista 'dashboard'
-            return redirect()->route('abogado.dashboard');
+            return redirect()->route('abogado.dashboard', ['id' => $abogado->id]);
+
         }
 
-        if (strpos($user->email, 'admin@admin.com') !== false) {
+        if (strpos($user->email, 'admin @admin.com') !== false) {
             // Redirigir a la vista 'dashboard'
             return redirect()->route('admin.dashboard');
         }

@@ -38,9 +38,9 @@
                             </p>
 
                             <div class="mt-auto">
-                                <a href="{{ route('abogados.show', $abogado->id) }}" 
+                                <a href="{{ route('abogados.solicitud', $abogado->id) }}" 
                                    class="btn btn-primary btn-block">
-                                    Contactar
+                                    Solicitar Asesoría
                                 </a>
                             </div>
                         </div>

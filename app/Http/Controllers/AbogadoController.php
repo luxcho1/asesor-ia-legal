@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Abogado;
 use App\Models\User;
+use App\Models\SolicitudAsistencia;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -146,4 +148,43 @@ class AbogadoController extends Controller
         return redirect('/dashboard')->with('mensaje','Producto borrado correctamente');
 
     }
+    
+    public function mostrarFormulario($id)
+    {
+        // Encuentra el abogado por ID
+        $abogado = Abogado::findOrFail($id);
+        return view('recomendacion-abogado.form', compact('abogado'));
+    }
+
+    public function enviarSolicitud(Request $request, $id)
+    {
+        // Validar los datos del formulario
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'telefono' => 'required|string|max:15',
+            'correo' => 'required|email|max:255',
+            'descripcion' => 'required|string|max:1000',
+        ]);
+
+        SolicitudAsistencia::create([
+            'abogado_id' => $id, // Asegúrate de que esta línea esté aquí
+            'nombre' => $request->nombre,
+            'telefono' => $request->telefono,
+            'correo' => $request->correo,
+            'descripcion' => $request->descripcion,
+        ]);
+
+        // Guardar los datos en la base de datos o enviar un correo, según tu lógica
+        // Aquí deberías implementar la lógica para guardar o enviar los datos
+
+        return redirect()->route('abogados.show', $id)->with('success', 'Formulario enviado exitosamente.');
+    }
+
+    public function mostrarDashboard($id)
+{
+    $abogado = Abogado::findOrFail($id);
+    $solicitudes = $abogado->solicitudes()->get();
+
+    return view('abogado.dashboard', compact('abogado', 'solicitudes'));
+}
 }

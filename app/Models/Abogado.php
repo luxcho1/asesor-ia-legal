@@ -17,4 +17,9 @@ class Abogado extends Model
         'sueldo',
         'biografia',
     ];
+
+    public function solicitudes()
+    {
+        return $this->hasMany(SolicitudAsistencia::class);
+    }
 }
