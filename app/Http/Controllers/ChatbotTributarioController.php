@@ -71,10 +71,16 @@ class ChatbotTributarioController extends Controller
         // Obtener la respuesta de la IA
         $botReply = $response->choices[0]->message->content;
 
+        // Obtener el próximo id_historial para el usuario
+        $nextConversationId = DB::table('chat_historial')
+        ->where('user_id', $userId)
+        ->max('id_historial') + 1;
+
         // Guardar la conversación en la base de datos
         if ($userId) {
             DB::table('chat_historial')->insert([
                 'user_id' => $userId,
+                'id_historial' => $nextConversationId,
                 'fecha' => now(),
                 'especializacion' => 'Tributario',
                 'Conversacion' => $userMessage,

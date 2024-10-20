@@ -10,12 +10,14 @@ class CreateChatHistorialTable extends Migration
     {
         Schema::create('chat_historial', function (Blueprint $table) {
             $table->string('user_id');
-            $table->id('id_historial');
+            $table->unsignedBigInteger('id_historial');
             $table->timestamp('fecha')->useCurrent();
             $table->string('especializacion');
             $table->text('Conversacion');
             $table->text('bot_reply');
             $table->timestamps();
+
+            $table->primary(['user_id', 'id_historial']);
         });
     }
 
