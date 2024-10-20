@@ -23,7 +23,14 @@ class AbogadoController extends Controller
     $datos['abogados'] = Abogado::where('especialidad', $especialidad)->paginate(1000);
     
     // Retornar la vista con los abogados filtrados
-    return view('admin.abogados.index', $datos);
+    $vista = 'recomendacion-abogado.' . strtolower($especialidad);
+    // Verificar si la vista existe, de lo contrario mostrar error o una vista por defecto
+    if (!view()->exists($vista)) {
+        return abort(404, 'Vista no encontrada para la especialidad: ' . $especialidad);
+    }
+
+    // Retornar la vista con los abogados filtrados
+    return view($vista, $datos);
 }
 
     /**
