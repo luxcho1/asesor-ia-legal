@@ -16,44 +16,42 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         @foreach ($abogados as $abogado)
             @if ($abogado->especialidad === 'Civil')
-                <div class="col d-flex">
-                    <div class="card h-100 w-100">
-                        <img class="card-img-top" 
-                             src="{{ asset('storage/'.$abogado->imagen) }}" 
-                             alt="{{ $abogado->nombre }}" 
-                             style="height: 200px; object-fit: cover;">
+
+            <div class="col d-flex">
+                <div class="card h-100 w-100 text-center">
+                    <div class="card-img-container mx-auto" 
+                     style="width: 150px; height: 150px;  border-radius: 50%;">
+                        <img class="card-img-top img-fluid" 
+                            src="{{ asset('storage/' . $abogado->imagen) }}" 
+                            alt="Imagen de {{ $abogado->name }}" 
+                            style="width: 100%; height: 100%; object-fit: scale-down;">
+                    </div>
+
+                    <div class="card-body d-flex flex-column mb-3">
+                        <h5 class="card-title">{{ $abogado->name }}</h5>
+                        <ul class="list-unstyled mb-3" style="text-align: justify;">
+                            <li><strong>Especialidad:</strong> {{ $abogado->especialidad }}</li>
+                            <li><strong>Email:</strong> <a href="mailto:{{ $abogado->email }}">{{ $abogado->email }}</a></li>
+                            <li><strong>Teléfono:</strong> +569 {{ $abogado->telefono }}</li>
+                            <li><strong>Sueldo:</strong> {{ $abogado->sueldo }}</li>
+                        </ul>
+                    
+                    
                         
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title text-center">{{ $abogado->nombre }}</h5>
-                            
-                            <ul class="list-unstyled">
-                                <li><strong>Especialidad:</strong> {{ $abogado->especialidad }}</li>
-                                <li><strong>Email:</strong> <a href="mailto:{{ $abogado->email }}">{{ $abogado->email }}</a></li>
-                                <li><strong>Teléfono:</strong> {{ $abogado->telefono }}</li>
-                                <li><strong>Sueldo:</strong> {{ $abogado->sueldo }}</li>
-                            </ul>
-
-                            <p class="card-text text-truncate mb-4" style="max-height: 3.5em;">
-                                <strong>Biografía:</strong> {{ $abogado->biografia }}
+                        <div class="mb-3">
+                            <strong>Biografía:</strong> 
+                            <p class="card-text" style="text-align: justify;">
+                                {{ $abogado->biografia }}
                             </p>
-
-                            <div class="mt-auto">
-                                <a href="{{ route('abogados.show', $abogado->id) }}" 
-                                   class="btn btn-primary btn-block">
-                                    Contactar
-                                </a>
-                            </div>
                         </div>
+
                     </div>
                 </div>
+            </div>
             @endif
         @endforeach
     </div>
 </div>
-
-
-
-
 </body>
 @endsection
 
