@@ -199,7 +199,9 @@ class AbogadoController extends Controller
 {
     $abogado = Abogado::findOrFail($id);
     $solicitudes = $abogado->solicitudes()->get();
+    $totalSolicitudes = $solicitudes->count();
 
-    return view('abogado.dashboard', compact('abogado', 'solicitudes'));
+
+    return view('abogado.dashboard', compact('abogado', 'solicitudes','totalSolicitudes'));
 }
 }
