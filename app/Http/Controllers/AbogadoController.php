@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Abogado;
 use App\Models\User;
+use App\Models\SolicitudAsistencia;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -49,10 +51,11 @@ class AbogadoController extends Controller
     {
         //
         $campos=[
-            'imagen'         => '|image|mimes:jpg,jpeg,png|max:2048',
-            'name'         => 'required|string|max:100',
+            'rut_abogado'   => 'required|string|max:100|unique:abogados',
+            'imagen'         => 'required|max:10000|mimes:jpeg,png,jpg',
+            'name'           => 'required|string|max:100',
             'especialidad'   => 'required|string|max:100',
-            'email'          => 'required|string|max:99999',
+            'email'         => 'required|string|email|max:255|unique:abogados',
             'telefono'       => 'required|numeric|max:999999999',
             'sueldo'         => 'required|numeric|max:999999999',
             'biografia'      => 'required|string|max:99999',
@@ -60,29 +63,29 @@ class AbogadoController extends Controller
 
         $mensaje=[
             'required' => 'El :attribute es requerido',
+            'imagen' => 'La imagen es requerida',
+            'unique' => 'El :attribute ya existe.',
+            'numeric' => 'El :attribute debe ser un número',
+
         ];
+        $this->validate($request, $campos, $mensaje);
+        $datosAbogado = $request->except('_token');
 
         if ($request->hasFile('imagen')) {
-            // Guarda la imagen en 'storage/app/public/uploads' y devuelve la ruta relativa
             $rutaImagen = $request->file('imagen')->store('uploads', 'public');
-            
-            // Guarda la ruta de la imagen (ej. 'uploads/nombre_imagen.jpg') en lugar de la ruta temporal
-            $datosProducto['imagen'] = $rutaImagen;
+            $datosAbogado['imagen'] = $rutaImagen; // Guarda solo la ruta relativa
         }
-        
-
-        $this->validate($request, $campos, $mensaje);
+    
         $usuario = User::create([
             'rut_abogado'   => $request->rut_abogado,
             'name'          => $request->name,
             'email'         => $request->email,
             'password'      => Hash::make($request->email)
         ]);
-        $datosAbogado = request()->except('_token');
         $datosAbogado['id'] = $usuario->id; 
 
         Abogado::insert($datosAbogado);
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.dashboard')->with('mensaje','Abogado agregado correctamente');
     }
         
 
@@ -146,4 +149,59 @@ class AbogadoController extends Controller
         return redirect('/dashboard')->with('mensaje','Producto borrado correctamente');
 
     }
+    
+    public function mostrarFormulario($id)
+    {
+        // Encuentra el abogado por ID
+        $abogado = Abogado::findOrFail($id);
+        return view('recomendacion-abogado.form', compact('abogado'));
+    }
+
+    public function enviarSolicitud(Request $request, $id)
+    {
+        $campos = [
+            'nombre' => 'required|string|max:255',
+            'telefono' => 'required|numeric|',
+            'correo' => 'required|email|max:255|unique:solicitudes_asistencia,correo',
+            'descripcion' => 'required|string|max:1000',
+        ];
+
+        $mensaje = [
+            'required' => 'El :attribute es requerido',
+            'numeric' => 'El :attribute debe ser un número',
+            'max' => 'El :attribute no debe superar :max caracteres',
+            'correo' => 'El :attribute debe ser un correo electrónico válido',
+            'unique' => 'El :attribute ya realizo una solicitud',
+        ];
+        
+
+        // Definir las reglas de validación
+        
+        // dd($request->all());
+
+        $this->validate($request, $campos, $mensaje);
+
+        SolicitudAsistencia::create([
+            'abogado_id' => $id, // Asegúrate de que esta línea esté aquí
+            'nombre' => $request->nombre,
+            'telefono' => $request->telefono,
+            'correo' => $request->correo,
+            'descripcion' => $request->descripcion,
+        ]);
+
+        // Guardar los datos en la base de datos o enviar un correo, según tu lógica
+        // Aquí deberías implementar la lógica para guardar o enviar los datos
+
+        return redirect()->route('abogados.solicitud', $id)->with('success', 'Formulario enviado exitosamente.');
+    }
+
+    public function mostrarDashboard($id)
+{
+    $abogado = Abogado::findOrFail($id);
+    $solicitudes = $abogado->solicitudes()->get();
+    $totalSolicitudes = $solicitudes->count();
+
+
+    return view('abogado.dashboard', compact('abogado', 'solicitudes','totalSolicitudes'));
+}
 }
