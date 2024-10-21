@@ -1,18 +1,11 @@
 @extends('layouts.app')
 @section('content')
 <body>
-<div class="row">
-    <div class="col"></div>
-    <div class="col" style="text-align: center">
-        <h1>
-            Estos son nuestros abogados especialistas en asesoria legal
-        </h1>
-        <a href="{{ url('/') }}" class="btn btn-primary">Ir a inicio</a>
+<div class="container">
+    <div class="row" style="text-align: center">
+        <h1>Estos son nuestros abogados especialistas en Civil</h1>
     </div>
-    <div class="col"></div>
-</div>
 
-<div class="container py-5">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         @foreach ($abogados as $abogado)
             @if ($abogado->especialidad === 'Civil')
@@ -45,11 +38,23 @@
                             </p>
                         </div>
 
+                        <div class="mt-auto">
+                            <a href="{{ route('abogados.solicitud', $abogado->id) }}" 
+                               class="btn btn-success btn-block">
+                                Solicitar Asesoría
+                            </a>
+                        </div>
+
                     </div>
                 </div>
             </div>
             @endif
         @endforeach
+    </div>
+    <div class="row">
+        <div class="col-12 text-center mt-4">
+            <a href="{{ url('/') }}" class="btn btn-warning btn-lg">Regresar al chatbot</a>
+        </div>
     </div>
 </div>
 </body>
