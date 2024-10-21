@@ -1,31 +1,51 @@
 @extends('layouts.admin')
 @section('content')
-<div class="container text-center" style="padding-top: 5%; padding-bottom: 5%;">
-    <div class="row">
-        @foreach($abogados as $abogado)
-            <div class="col-md-3 mb-4"> {{-- 4 cards por fila en pantallas medianas y superiores --}}
-                <div class="card" style="align-content: center">
-                    <img class="img-thumbnail img-fluid" src="{{ asset('storage/' . $abogado->imagen) }}" width="100" alt="">
+<div class="container">
+    <div class="row" style="text-align: center">
+        <h1>Abogados registrados en AsesorIA Legal</h1>
+    </div>
+    <div class="container mt-5">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            @foreach($abogados as $abogado)
+                <div class="col d-flex">
+                    <div class="card h-100 w-100 text-center">
+                        <div class="card-img-container mx-auto" 
+                         style="width: 150px; height: 150px;  border-radius: 50%;">
+                            <img class="card-img-top img-fluid" 
+                                src="{{ asset('storage/' . $abogado->imagen) }}" 
+                                alt="Imagen de {{ $abogado->name }}" 
+                                style="width: 100%; height: 100%; object-fit: scale-down;">
+                        </div>
 
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $abogado->name }}</h5>
-                        <p class="card-text"><strong>Especialidad:</strong> {{ $abogado->especialidad }}</p>
-                        <p class="card-text"><strong>Email:</strong> {{ $abogado->email }}</p>
-                        <p class="card-text"><strong>Teléfono:</strong> {{ $abogado->telefono }}</p>
-                        <p class="card-text"><strong>Sueldo:</strong> {{ $abogado->sueldo }}</p>
-                        <p class="card-text"><strong>Biografía:</strong> {{ $abogado->biografia }}</p>
-                        <p class="card-text"><strong>id:</strong> {{ $abogado->abogado_id }}</p>
-                        <a href="{{ route('abogados.show', $abogado->id) }}" class="btn btn-primary">Ver Detalles</a>
+                        <div class="card-body d-flex flex-column mb-3">
+                            <h5 class="card-title">{{ $abogado->name }}</h5>
+                            <ul class="list-unstyled mb-3" style="text-align: justify;">
+                                <li><strong>Especialidad:</strong> {{ $abogado->especialidad }}</li>
+                                <li><strong>Email:</strong> <a href="mailto:{{ $abogado->email }}">{{ $abogado->email }}</a></li>
+                                <li><strong>Teléfono:</strong> +569 {{ $abogado->telefono }}</li>
+                                <li><strong>Sueldo:</strong> {{ $abogado->sueldo }}</li>
+                            </ul>
+                        
+                        
+                            
+                            <div class="mb-3">
+                                <strong>Biografía:</strong> 
+                                <p class="card-text" style="text-align: justify;">
+                                    {{ $abogado->biografia }}
+                                </p>
+                            </div>
+    
+                            <a href="{{ route('abogados.show', $abogado->id) }}" class="btn btn-primary mt-auto">Ver Detalles</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
-        <a href="{{ url('/dashboard') }}" class="btn btn-primary btn-lg">Regresar</a>
+            @endforeach
+        </div>
+    
+        <div class="mt-4 text-center">
+            <a href="{{ url('/dashboard') }}" class="btn btn-primary btn-lg">Regresar</a>
+        </div>
     </div>
-    {{-- Paginación --}}
-    {{-- {{ $abogados->links() }} --}}
-
-    {{-- Incluir la lista de abogados con especialidad civil --}}
-    {{-- @include('recomendacion-abogado.civil', ['abogados' => $abogados]) --}}
+    
 </div>
 @endsection
