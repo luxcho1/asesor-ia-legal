@@ -50,7 +50,7 @@
                           alt="Abogado Especialista">
                         <div class="card-body text-center">
                             <p class="card-text text-muted mb-4">
-                                ¿Quieres conocer a nuestros primeros abogados especialistas en asesoría civil?
+                                ¿Quieres conocer a nuestros primeros abogados especialistas en asesoría civil??
                             </p>
                             <a href="{{ url('/recomendacion/civil') }}" class="btn btn-outline-primary">
                                 Más Información
