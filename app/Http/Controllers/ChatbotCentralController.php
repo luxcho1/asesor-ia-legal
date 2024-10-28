@@ -8,7 +8,24 @@ use OpenAI\Laravel\Facades\OpenAI;
 
 class ChatbotCentralController extends Controller
 {
-    public function submit(Request $request)
+    public function showCentralChatbot()
+    {
+        $userId = auth()->id();
+        $history = [];
+
+        if ($userId) {
+            $history = DB::table('chat_historial')
+                ->where('user_id', $userId)
+                ->where('especializacion', 'Central')
+                ->orderBy('created_at', 'asc')
+                ->get(['Conversacion', 'bot_reply'])
+                ->toArray();
+        }
+
+        return view('chatbot.central', compact('history'));
+    }
+
+    public function ajaxSubmit(Request $request)
     {
         // Validar que el campo de pregunta está presente
         $request->validate([
@@ -61,8 +78,8 @@ class ChatbotCentralController extends Controller
 
             // Obtener el próximo id_historial para el usuario
             $nextConversationId = DB::table('chat_historial')
-            ->where('user_id', $userId)
-            ->max('id_historial') + 1;
+                ->where('user_id', $userId)
+                ->max('id_historial') + 1;
 
             // Guardar la conversación en la base de datos
             if ($userId) {
@@ -78,14 +95,13 @@ class ChatbotCentralController extends Controller
                 ]);
             }
 
-            // Devolver la respuesta a la vista de la pagina
-            return view('chatbot.central', [
+            // Devolver la respuesta en formato JSON
+            return response()->json([
                 'userMessage' => $userMessage,
-                'botReply' => $botReply,
-                'history' => $history
+                'botReply' => $botReply
             ]);
         } catch (\Exception $e) {
-            return back()->withErrors(['error' => 'Hubo un problema al procesar tu solicitud. Por favor, intenta de nuevo.']);
+            return response()->json(['error' => 'Hubo un problema al procesar tu solicitud. Por favor, intenta de nuevo.'], 500);
         }
     }
 }

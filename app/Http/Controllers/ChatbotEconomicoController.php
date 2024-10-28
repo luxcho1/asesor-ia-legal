@@ -8,7 +8,24 @@ use OpenAI\Laravel\Facades\OpenAI;
 
 class ChatbotEconomicoController extends Controller
 {
-    public function submit(Request $request)
+    public function showEconomicaChatbot()
+    {
+        $userId = auth()->id();
+        $history = [];
+
+        if ($userId) {
+            $history = DB::table('chat_historial')
+                ->where('user_id', $userId)
+                ->where('especializacion', 'Economico')
+                ->orderBy('created_at', 'asc')
+                ->get(['Conversacion', 'bot_reply'])
+                ->toArray();
+        }
+
+        return view('chatbot.economica', compact('history'));
+    }
+
+    public function ajaxSubmit(Request $request)
     {
         // Validar que el campo de pregunta está presente
         $request->validate([
@@ -90,11 +107,10 @@ class ChatbotEconomicoController extends Controller
             ]);
         }
 
-        // Devolver la respuesta a la vista
-        return view('chatbot.economica', [
+        // Devolver la respuesta en formato JSON
+        return response()->json([
             'userMessage' => $userMessage,
-            'botReply' => $botReply,
-            'history' => $history
+            'botReply' => $botReply
         ]);
     }
 }

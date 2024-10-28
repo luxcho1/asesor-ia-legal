@@ -8,7 +8,24 @@ use OpenAI\Laravel\Facades\OpenAI;
 
 class ChatbotTributarioController extends Controller
 {
-    public function submit(Request $request)
+    public function showtributariaChatbot()
+    {
+        $userId = auth()->id();
+        $history = [];
+
+        if ($userId) {
+            $history = DB::table('chat_historial')
+                ->where('user_id', $userId)
+                ->where('especializacion', 'Tributario')
+                ->orderBy('created_at', 'asc')
+                ->get(['Conversacion', 'bot_reply'])
+                ->toArray();
+        }
+
+        return view('chatbot.tributaria', compact('history'));
+    }
+    
+    public function ajaxSubmit(Request $request)
     {
         // Validar que el campo de pregunta está presente
         $request->validate([
@@ -90,11 +107,10 @@ class ChatbotTributarioController extends Controller
             ]);
         }
 
-        // Devolver la respuesta a la vista
-        return view('chatbot.tributaria', [
+        // Devolver la respuesta en formato JSON
+        return response()->json([
             'userMessage' => $userMessage,
-            'botReply' => $botReply,
-            'history' => $history
+            'botReply' => $botReply
         ]);
     }
 }

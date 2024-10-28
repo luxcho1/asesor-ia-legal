@@ -3,42 +3,47 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <!-- Tarjeta del chatbot para nuevas consultas -->
             <div class="card shadow-lg">
                 <div class="card-header bg-dark text-white text-center">
-                    <h3>Chatbot de Asesoría en Leyes Laborales</h3>
+                    <h3>Chatbot de Asesoría en Leyes laborales</h3>
                 </div>
-                <div id="chat-history" class="card-body chat-box" style="max-height: 300px; overflow-y: auto;">
-                    @guest
-                        <div class="alert alert-warning" role="alert">
-                            {{ __('Please log in to use the chatbot and save your chat history.') }}
-                        </div>
-                    @else
-                        @if (!empty($history))
-                            @foreach ($history as $entry)
-                                <div class="mb-3">
-                                    <p><strong>Usuario:</strong> {{ $entry->Conversacion }}</p>
-                                    <p><strong>Chatbot:</strong> {{ $entry->bot_reply }}</p>
-                                </div>
-                            @endforeach
-                        @endif
-                        @if (isset($userMessage) && isset($botReply))
-                            <div class="mb-3">
-                                <p><strong>Usuario:</strong> {{ $userMessage }}</p>
-                                <p><strong>Chatbot:</strong> <span id="botReply">{{ $botReply }}</p>
-                            </div>
-                        @endif
-                    @endguest
+                <div class="card-body chat-box" style="max-height: 300px; overflow-y: auto;">
+                    <!-- Consultas recientes -->
+                    <div id="chat-current">
+                        <!-- Aquí se mostrarán las consultas recientes -->
+                    </div>
                 </div>
                 <div class="card-footer">
-                    <form action="{{ route('chatbot.laboral') }}" method="POST" class="d-flex">
+                    <form id="chat-form" class="d-flex">
                         @csrf
                         <input type="text" name="askText" class="form-control me-2" placeholder="Escribe tu mensaje..." required>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="submit" class="btn btn-primary me-2">Enviar</button>
                     </form>
                 </div>
             </div>
+
+            <!-- Botón para regresar a inicio y mostrar/ocultar historial -->
             <div class="text-center mt-4">
                 <a class="btn btn-secondary" href="{{ url('/chatbot') }}" id="regresar" name="regresar">Volver a Inicio</a>
+                <button type="button" id="toggle-history" class="btn btn-primary me-2">Ver Historial</button>
+            </div>
+
+            <!-- Sección del historial debajo del botón "Volver a Inicio" -->
+            <div id="chat-history" class="card-body mt-4" style="display: none;">
+                <h5>Historial de Conversaciones</h5>
+                <div class="chat-box" style="max-height: 300px; overflow-y: auto;">
+                    @if (!empty($history))
+                        @foreach ($history as $entry)
+                            <div class="mb-3">
+                                <p><strong>Usuario:</strong> {{ $entry->Conversacion }}</p>
+                                <p><strong>Chatbot:</strong> {{ $entry->bot_reply }}</p>
+                            </div>
+                        @endforeach
+                    @else
+                        <p>No hay historial disponible.</p>
+                    @endif
+                </div>
             </div>
         </div>
         <div class="col-md-6 d-flex justify-content-center mt-5">
@@ -59,4 +64,11 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+@vite(['resources/sass/chatbots.scss', 'resources/js/chatbots.js'])
+<script>
+    const chatbotAjaxUrl = "{{ route('chatbot.laboral.ajax') }}";
+</script>
 @endsection

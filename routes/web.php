@@ -58,32 +58,32 @@ Route::get('/recomendacion/tributaria', function () {return view('recomendacion-
 
     
 //Chatbots
-Route::get('/chatbot/central', function () {return view('chatbot.central');});
-Route::post('/chatbot/central', [ChatbotCentralController::class, 'submit'])->name('chatbot.central');
+Route::get('/chatbot/central', [ChatbotCentralController::class, 'showCentralChatbot'])->name('chatbot.central');
+Route::post('/chatbot/central/ajax', [ChatbotCentralController::class, 'ajaxSubmit'])->name('chatbot.central.ajax');
 
 //Chatbot Civil
-Route::get('/chatbot/civil', function () {return view('chatbot.civil');});
-Route::post('/chatbot/civil', [ChatbotCivilController::class, 'submit'])->name('chatbot.civil');
+Route::get('/chatbot/civil', [ChatbotCivilController::class, 'showCivilChatbot'])->name('chatbot.civil');
+Route::post('/chatbot/civil/ajax', [ChatbotCivilController::class, 'ajaxSubmit'])->name('chatbot.civil.ajax');
 
 //Chatbot Economica
-Route::get('/chatbot/economica', function () {return view('chatbot.economica');});
-Route::post('/chatbot/economica', [ChatbotEconomicoController::class, 'submit'])->name('chatbot.economica');
+Route::get('/chatbot/economica', [ChatbotEconomicoController::class, 'showEconomicaChatbot'])->name('chatbot.economica');
+Route::post('/chatbot/economica/ajax', [ChatbotEconomicoController::class, 'ajaxSubmit'])->name('chatbot.economica.ajax');
 
 //Chatbot Familiar
-Route::get('/chatbot/familiar', function () {return view('chatbot.familiar');});
-Route::post('/chatbot/familiar', [ChatbotFamiliarController::class, 'submit'])->name('chatbot.familiar');
+Route::get('/chatbot/familiar', [ChatbotFamiliarController::class, 'showFamiliarChatbot'])->name('chatbot.familiar');
+Route::post('/chatbot/familiar/ajax', [ChatbotFamiliarController::class, 'ajaxSubmit'])->name('chatbot.familiar.ajax');
 
 //Chatbot Laboral
-Route::get('/chatbot/laboral', function () {return view('chatbot.laboral');});
-Route::post('/chatbot/laboral', [ChatbotLaboralController::class, 'submit'])->name('chatbot.laboral');
+Route::get('/chatbot/laboral', [ChatbotLaboralController::class, 'showLaboralChatbot'])->name('chatbot.laboral');
+Route::post('/chatbot/laboral/ajax', [ChatbotLaboralController::class, 'ajaxSubmit'])->name('chatbot.laboral.ajax');
 
 //Chatbot Penal
-Route::get('/chatbot/penal', function () {return view('chatbot.penal');});
-Route::post('/chatbot/penal', [ChatbotPenalController::class, 'submit'])->name('chatbot.penal');
+Route::get('/chatbot/penal', [ChatbotPenalController::class, 'showPenalChatbot'])->name('chatbot.penal');
+Route::post('/chatbot/penal/ajax', [ChatbotPenalController::class, 'ajaxSubmit'])->name('chatbot.penal.ajax');
 
 //Chatbot Tributario
-Route::get('/chatbot/tributaria', function () {return view('chatbot.tributaria');});
-Route::post('/chatbot/tributaria', [ChatbotTributarioController::class, 'submit'])->name('chatbot.tributaria');
+Route::get('/chatbot/tributaria', [ChatbotTributarioController::class, 'showtributariaChatbot'])->name('chatbot.tributaria');
+Route::post('/chatbot/tributaria/ajax', [ChatbotTributarioController::class, 'ajaxSubmit'])->name('chatbot.tributaria.ajax');
 
 Route::get('/test-openai', function () {
     return response()->json([
