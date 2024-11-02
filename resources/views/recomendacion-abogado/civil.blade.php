@@ -53,7 +53,7 @@
     </div>
     <div class="row">
         <div class="col-12 text-center mt-4">
-            <a href="{{ url('/') }}" class="btn btn-warning btn-lg">Regresar al chatbot</a>
+            <a href="{{ url('/chatbot/civil') }}" class="btn btn-warning btn-lg">Regresar al chatbot</a>
         </div>
     </div>
 </div>
