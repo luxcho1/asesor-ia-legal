@@ -51,7 +51,7 @@ class LoginController extends Controller
 
         }
 
-        if (strpos($user->email, 'admin @admin.com') !== false) {
+        if (strpos($user->email, 'admin@admin.com') !== false) {
             // Redirigir a la vista 'dashboard'
             return redirect()->route('admin.dashboard');
         }
