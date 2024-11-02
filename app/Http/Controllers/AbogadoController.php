@@ -50,14 +50,16 @@ class AbogadoController extends Controller
     public function store(Request $request)
     {
         //
+        $request->merge(['email' => $request->email_prefix . '@asesorialegal.com']);
+
         $campos=[
             'rut_abogado'   => 'required|string|max:100|unique:abogados',
             'imagen'         => 'required|max:10000|mimes:jpeg,png,jpg',
             'name'           => 'required|string|max:100',
             'especialidad'   => 'required|string|max:100',
             'email'         => 'required|string|email|max:255|unique:abogados',
-            'telefono'       => 'required|numeric|max:999999999',
-            'sueldo'         => 'required|numeric|max:999999999',
+            'telefono'       => 'required|string|max:999999999',
+            'sueldo'         => 'required|string|max:999999999',
             'biografia'      => 'required|string|max:99999',
         ];
 
@@ -69,7 +71,7 @@ class AbogadoController extends Controller
 
         ];
         $this->validate($request, $campos, $mensaje);
-        $datosAbogado = $request->except('_token');
+        $datosAbogado = $request->except('_token','email_prefix');
 
         if ($request->hasFile('imagen')) {
             $rutaImagen = $request->file('imagen')->store('uploads', 'public');
@@ -126,12 +128,9 @@ class AbogadoController extends Controller
     public function update(Request $request, $id)
     {
         $campos=[
-            'rut_abogado'   => 'required|string|max:100',
-            'name'           => 'required|string|max:100',
             'especialidad'   => 'required|string|max:100',
-            'email'         => 'required|string|email|max:255|',
-            'telefono'       => 'required|numeric|max:999999999',
-            'sueldo'         => 'required|numeric|max:999999999',
+            'telefono'       => 'required|string|max:999999999',
+            'sueldo'         => 'required|string|max:999999999',
             'biografia'      => 'required|string|max:99999',
         ];
 
@@ -158,9 +157,15 @@ class AbogadoController extends Controller
     public function destroy($id)
     {
         $abogado = Abogado::findOrFail($id);
-        Abogado::destroy($id);
-        return redirect('/dashboard')->with('mensaje', 'Abogado borrado correctamente')->with('tipo_mensaje', 'danger');
+        $usuario = User::find($abogado->id);
 
+        $abogado->delete();
+
+        if ($usuario) {
+            $usuario->delete();
+        }
+
+        return redirect('/dashboard')->with('mensaje', 'Abogado borrado correctamente')->with('tipo_mensaje', 'danger');
     }
 
     public function mostrarVistaEliminar()
