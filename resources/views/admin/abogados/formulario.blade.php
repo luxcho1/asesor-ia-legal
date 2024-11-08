@@ -1,4 +1,9 @@
 <div class="container">
+    <div class="row" style="text-align: center">
+        @if ($modo == 'Editar')
+            <h1>Editar perfil de {{ $abogado->name }}</h1> 
+        @endif
+    </div>
     <div class="row">
         <div class="col"></div>
         <div class="col-6">
@@ -16,27 +21,31 @@
                 @enderror
             </div>
             
-            <div class="form-group mb-3">
-                <h5>Rut</h5>
-                <input id="rut_abogado" type="text" class="form-control @error('rut_abogado') is-invalid @enderror" name="rut_abogado" 
-                       value="{{ isset($abogado->rut_abogado) ? $abogado->rut_abogado : old('rut_abogado') }}" required>
-                @error('rut_abogado')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
+            @if ($modo == 'Ingresar')
+                <div class="form-group">
+                    <h5>Rut</h5>
+                    <input id="rut_abogado" type="text" class="form-control @error('rut_abogado') is-invalid @enderror" name="rut_abogado" 
+                        value="{{ isset($abogado->rut_abogado) ? $abogado->rut_abogado : old('rut_abogado') }}" required>
+                    @error('rut_abogado')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+            @endif
             
-            <div class="form-group mb-3">
-                <h5>Nombre</h5>
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" 
-                       value="{{ isset($abogado->name) ? $abogado->name : old('name') }}" required autocomplete="name" autofocus>
-                @error('name')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
+            @if ($modo == 'Ingresar')
+                <div class="form-group">
+                    <h5>Nombre</h5>
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" 
+                        value="{{ isset($abogado->name) ? $abogado->name : old('name') }}" required autocomplete="name" autofocus>
+                    @error('name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+            @endif
             
             <div class="form-group mb-3">
                 <h5>Especialidad</h5>
@@ -56,17 +65,28 @@
                 @enderror
             </div>
             
-            
-            <div class="form-group mb-3">
+            @if ($modo == 'Ingresar')
+            <div class="form-group">
                 <h5>Email</h5>
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" 
-                       value="{{ isset($abogado->email) ? $abogado->email : old('email') }}" required autocomplete="email">
+                <div class="input-group">
+                    <input 
+                        id="email_prefix" 
+                        type="text" 
+                        class="form-control @error('email') is-invalid @enderror" 
+                        name="email_prefix" 
+                        value="{{ isset($abogado->email) ? explode('@', $abogado->email)[0] : old('email_prefix') }}" 
+                        required 
+                        autocomplete="email"
+                        placeholder="Ingresar nombre de usuario">   
+                    <span class="input-group-text">@asesorialegal.com</span>
+                </div>
                 @error('email')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                 @enderror
-            </div>
+            </div>            
+            @endif
             
             <div class="form-group mb-3">
                 <h5>Sueldo</h5>

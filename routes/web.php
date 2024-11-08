@@ -28,12 +28,26 @@ use App\Http\Controllers\AbogadoController;
 
 Auth::routes();
 
+Route::middleware(['auth'])->group(function () {
+    // Admin Dashboard
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+
+    // Rutas para gestión de abogados
+    Route::get('/abogados/eliminar', [AbogadoController::class, 'mostrarVistaEliminar']);
+    Route::get('/abogados/editar', [AbogadoController::class, 'mostrarVistaEditar']);
+    Route::resource('abogados', AbogadoController::class);
+});
+
 //Home
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//admin
-Route::get('/dashboard', function () {return view('admin.dashboard');})->name('admin.dashboard');;
-Route::resource('abogados', AbogadoController::class);
+// //admin
+// Route::get('/dashboard', function () {return view('admin.dashboard');})->name('admin.dashboard');;
+// Route::get('/abogados/eliminar', [AbogadoController::class, 'mostrarVistaEliminar']);
+// Route::get('/abogados/editar',   [AbogadoController::class, 'mostrarVistaEditar']);
+// Route::resource('abogados', AbogadoController::class);
 
 
 //navbar
@@ -47,19 +61,6 @@ Route::get('/recomendacion/civil/{id}/solicitud', [AbogadoController::class, 'mo
 Route::post('/recomendacion/civil/{id}/solicitud', [AbogadoController::class, 'enviarSolicitud'])->name('abogados.enviarSolicitud');
 
 Route::get('/dashboard-abogado/{id}', [AbogadoController::class, 'mostrarDashboard'])->name('abogado.dashboard');
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Route::get('/dashboard-abogado', function () {return view('abogado.dashboard');})->name('abogado.dashboard');

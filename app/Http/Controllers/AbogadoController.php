@@ -50,14 +50,16 @@ class AbogadoController extends Controller
     public function store(Request $request)
     {
         //
+        $request->merge(['email' => $request->email_prefix . '@asesorialegal.com']);
+
         $campos=[
             'rut_abogado'   => 'required|string|max:100|unique:abogados',
             'imagen'         => 'required|max:10000|mimes:jpeg,png,jpg',
             'name'           => 'required|string|max:100',
             'especialidad'   => 'required|string|max:100',
             'email'         => 'required|string|email|max:255|unique:abogados',
-            'telefono'       => 'required|numeric|max:999999999',
-            'sueldo'         => 'required|numeric|max:999999999',
+            'telefono'       => 'required|string|max:999999999',
+            'sueldo'         => 'required|string|max:999999999',
             'biografia'      => 'required|string|max:99999',
         ];
 
@@ -69,7 +71,7 @@ class AbogadoController extends Controller
 
         ];
         $this->validate($request, $campos, $mensaje);
-        $datosAbogado = $request->except('_token');
+        $datosAbogado = $request->except('_token','email_prefix');
 
         if ($request->hasFile('imagen')) {
             $rutaImagen = $request->file('imagen')->store('uploads', 'public');
@@ -104,8 +106,17 @@ class AbogadoController extends Controller
      */
     public function edit($id)
     {
-        $Abogado = Cliente::findOrFail($id);
-        return view('abogados.editar', compact('abogado'));
+        $abogado = Abogado::findOrFail($id);
+        return view('admin.abogados.edit', compact('abogado'));
+        
+        
+
+    }
+
+    public function mostrarVistaEditar()
+    {
+        $datos['abogados']=Abogado::paginate(1000);
+        return view('admin.abogados.showedit',$datos); 
     }
 
 
@@ -117,16 +128,17 @@ class AbogadoController extends Controller
     public function update(Request $request, $id)
     {
         $campos=[
-            'nombre'         => 'required|string|max:100',
             'especialidad'   => 'required|string|max:100',
-            'email'          => 'required|string|max:99999',
-            'telefono'       => 'required|numeric|max:999999999',
-            'sueldo'         => 'required|numeric|max:1000',
+            'telefono'       => 'required|string|max:999999999',
+            'sueldo'         => 'required|string|max:999999999',
             'biografia'      => 'required|string|max:99999',
         ];
 
         $mensaje=[
             'required' => 'El :attribute es requerido',
+            'imagen' => 'La imagen es requerida',
+            'unique' => 'El :attribute ya existe.',
+            'numeric' => 'El :attribute debe ser un número',
         ];
 
         $this->validate($request, $campos, $mensaje);
@@ -135,7 +147,7 @@ class AbogadoController extends Controller
 
         Abogado::where('id','=',$id)->update($datosAbogado);
         $Abogado=Abogado::findOrFail($id);
-        return redirect('/dashboard')->with('mensaje','Cliente actualizado correctamente');
+        return redirect('/dashboard')->with('mensaje','Abogado actualizado correctamente');
     }
 
 
@@ -144,10 +156,22 @@ class AbogadoController extends Controller
      */
     public function destroy($id)
     {
-        $Abogado=Abogado::findOrFail($id);
-        Abogado::destroy($id);
-        return redirect('/dashboard')->with('mensaje','Producto borrado correctamente');
+        $abogado = Abogado::findOrFail($id);
+        $usuario = User::find($abogado->id);
 
+        $abogado->delete();
+
+        if ($usuario) {
+            $usuario->delete();
+        }
+
+        return redirect('/dashboard')->with('mensaje', 'Abogado borrado correctamente')->with('tipo_mensaje', 'danger');
+    }
+
+    public function mostrarVistaEliminar()
+    {
+        $datos['abogados']=Abogado::paginate(1000);
+        return view('admin.abogados.destroy',$datos);
     }
     
     public function mostrarFormulario($id)
