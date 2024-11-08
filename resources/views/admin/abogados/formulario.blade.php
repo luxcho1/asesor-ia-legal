@@ -3,7 +3,7 @@
         <div class="col"></div>
         <div class="col-6">
 
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <h5>Imagen</h5>
                 @if(isset($abogado->imagen))
                     <img class="img-thumbnail img-fluid" src="{{ asset('storage/' . $abogado->imagen) }}" width="100" alt="Imagen del Abogado">
@@ -16,7 +16,7 @@
                 @enderror
             </div>
             
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <h5>Rut</h5>
                 <input id="rut_abogado" type="text" class="form-control @error('rut_abogado') is-invalid @enderror" name="rut_abogado" 
                        value="{{ isset($abogado->rut_abogado) ? $abogado->rut_abogado : old('rut_abogado') }}" required>
@@ -27,7 +27,7 @@
                 @enderror
             </div>
             
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <h5>Nombre</h5>
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" 
                        value="{{ isset($abogado->name) ? $abogado->name : old('name') }}" required autocomplete="name" autofocus>
@@ -38,7 +38,7 @@
                 @enderror
             </div>
             
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <h5>Especialidad</h5>
                 <select class="form-control @error('especialidad') is-invalid @enderror" name="especialidad" id="especialidad" required>
                     <option value="">Selecciona una especialidad</option>
@@ -57,7 +57,7 @@
             </div>
             
             
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <h5>Email</h5>
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" 
                        value="{{ isset($abogado->email) ? $abogado->email : old('email') }}" required autocomplete="email">
@@ -68,7 +68,7 @@
                 @enderror
             </div>
             
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <h5>Sueldo</h5>
                 <input id="sueldo" type="text" class="form-control @error('sueldo') is-invalid @enderror" name="sueldo" 
                        value="{{ isset($abogado->sueldo) ? $abogado->sueldo : old('sueldo') }}" required>
@@ -79,7 +79,7 @@
                 @enderror
             </div>
             
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <h5>Teléfono</h5>
                 <input id="telefono" type="text" class="form-control @error('telefono') is-invalid @enderror" name="telefono" 
                        value="{{ isset($abogado->telefono) ? $abogado->telefono : old('telefono') }}" required>
@@ -90,7 +90,7 @@
                 @enderror
             </div>
             
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <h5>Biografía</h5>
                 <textarea id="biografia" class="form-control @error('biografia') is-invalid @enderror" name="biografia" rows="2" required>{{ isset($abogado->biografia) ? $abogado->biografia : old('biografia') }}</textarea>
                 @error('biografia')

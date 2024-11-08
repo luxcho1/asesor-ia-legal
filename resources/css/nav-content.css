@@ -1,0 +1,63 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    Color: #333;
+    background-color: #AC9C8D;
+}
+
+.custom-button {
+    background-color: #D9D9D9; 
+    color: #322D29;    
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  
+.custom-button:hover {
+    background-color: #322D29; 
+    border-color: #D9D9D9; 
+    color: #D9D9D9;
+}
+
+.card{
+    background-color: #72383D;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color:#D9D9D9;
+}
+h5{
+    color: #EFE9E1;
+}
+
+.exp{
+    color: #322D29;
+    font-size: clamp(120%,2vw,200%);
+}
+
+.card-header{
+    font-size: 140%;
+}
+
+p{
+    text-align: justify;
+}
+
+.card-2{
+    background-color: #D1C7BD;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#322D29;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+}
+
+.social-link {
+    color: #EFE9E1; /* Cambia este color por el que desees */
+    text-decoration: none;
+}
+.social-link:hover {
+    color: #AC9C8D; /* Cambia el color cuando el enlace se pasa por encima */
+}

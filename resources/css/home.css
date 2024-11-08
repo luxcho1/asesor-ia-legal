@@ -1,18 +1,49 @@
+body{
+  font-family: 'Open Sans', sans-serif;
+  Color: #333;
+  background-color: #AC9C8D;
+}
+.cb{
+  background-color: #72383D;
+  padding: 20px;
+  border-radius: 8px;
+}
+.cb1{
+  background-color: #EFE9E1;
+  padding: 20px;
+  border-radius: 8px;
+}
 h2, h3 {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   letter-spacing: 0.5px;
+  color: #EFE9E1
+}
+
+.cb1-title{
+  color: #322D29;
+}
+
+.cb1-text{
+  color: #322D29;
 }
 
 p, li {
   font-family: 'Open Sans', sans-serif;
   line-height: 1.6;
+  color:#D9D9D9;
+}
+
+.icono{
+  color: #d1c7bd;
 }
 
 .badge {
   font-size: 16px;
   padding: 10px 15px;
   border-radius: 50%;
+  background-color: #d1c8bd;
+  color: #322d29;
 }
 
 .blockquote {
@@ -26,6 +57,13 @@ p, li {
 
 .shadow-sm {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cb2{
+  width: 22rem; 
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #D9D9D9;
 }
 
 .card {
@@ -46,4 +84,16 @@ p, li {
 .btn-outline-primary {
   border-radius: 30px;
   padding: 10px 20px;
+}
+
+.custom-button {
+  background-color: #D9D9D9; 
+  color: #322D29;
+  border: 2px solid #322D29; 
+}
+
+.custom-button:hover {
+  background-color: #72383D; 
+  border-color: #D9D9D9; 
+  color: #D9D9D9;
 }

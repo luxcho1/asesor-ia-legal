@@ -6,19 +6,19 @@
 
 
 <body>
-<div class="container py-5">
-    <div class="text-center mb-5">
-      <h2 class="fw-bold text-dark mb-3">Asesor-IA Legal</h2>
-      <p class="lead text-secondary">
+<div class="container py-5 ">
+    <div class="text-center mb-5 cb">
+      <h2 class="fw-bold mb-3">Asesor-IA Legal</h2>
+      <p class="lead">
         Una plataforma confiable para asesoría legal personalizada, 
         rápida y eficiente, con abogados expertos en diversas áreas del derecho.
       </p>
     </div>
   
-    <div class="row align-items-center mb-5">
+    <div class="row align-items-center mb-5 cb">
       <div class="col-md-6">
-        <h3 class="text-dark fw-semibold">¿Qué es Asesor-IA Legal?</h3>
-        <p class="text-muted mt-3">
+        <h3 class="fw-semibold">¿Qué es Asesor-IA Legal?</h3>
+        <p class="mt-3">
           Es una plataforma que te permite obtener asesoría legal 
           de forma sencilla. Nuestros abogados especializados en distintas ramas 
           del derecho te ayudarán a resolver cualquier problema legal con confianza y profesionalismo.
@@ -29,59 +29,59 @@
       </div>
     </div>
   
-    <div class="row mb-5">
+    <div class="row mb-5 cb">
       <div class="col-md-6">
-        <h3 class="text-dark fw-semibold">¿Cómo funciona?</h3>
-        <p class="text-muted mt-3">Sigue estos pasos para obtener asesoría legal:</p>
+        <h3 class="fw-semibold">¿Cómo funciona?</h3>
+        <p class="mt-3">Sigue estos pasos para obtener asesoría legal:</p>
         <ol class="list-unstyled">
           <li class="mb-3 d-flex align-items-center">
-            <span class="badge bg-primary me-3">1</span>
+            <span class="badge me-3">1</span>
             Selecciona el área del derecho en la que necesitas asesoría.
           </li>
           <li class="mb-3 d-flex align-items-center">
-            <span class="badge bg-primary me-3">2</span>
+            <span class="badge me-3">2</span>
             Completa el formulario con la información necesaria.
           </li>
           <li class="mb-3 d-flex align-items-center">
-            <span class="badge bg-primary me-3">3</span>
+            <span class="badge me-3">3</span>
             Espera a que uno de nuestros abogados se ponga en contacto contigo.
           </li>
         </ol>
       </div>
       <div class="col-md-6">
-        <h3 class="text-dark fw-semibold">Nuestros Servicios</h3>
+        <h3 class="fw-semibold">Nuestros Servicios</h3>
         <ul class="list-unstyled mt-3">
           <li class="mb-2">
-            <i class="bi bi-chevron-right text-primary"></i> Derecho Civil
+            <i class="bi bi-chevron-right icono"></i> Derecho Civil
           </li>
           <li class="mb-2">
-            <i class="bi bi-chevron-right text-primary"></i> Derecho Penal
+            <i class="bi bi-chevron-right icono"></i> Derecho Penal
           </li>
           <li class="mb-2">
-            <i class="bi bi-chevron-right text-primary"></i> Derecho Laboral
+            <i class="bi bi-chevron-right icono"></i> Derecho Laboral
           </li>
           <li class="mb-2">
-            <i class="bi bi-chevron-right text-primary"></i> Derecho Familiar
+            <i class="bi bi-chevron-right icono"></i> Derecho Familiar
           </li>
           <li class="mb-2">
-            <i class="bi bi-chevron-right text-primary"></i> Derecho Corporativo
+            <i class="bi bi-chevron-right icono"></i> Derecho Corporativo
           </li>
         </ul>
       </div>
     </div>
   
-    <div class="bg-light p-5 rounded shadow-sm">
-      <h3 class="text-center text-dark fw-semibold mb-4">Testimonios</h3>
+    <div class="cb1 p-5 rounded shadow-sm">
+      <h3 class="cb1-title text-center fw-semibold mb-4">Testimonios</h3>
       <div class="row">
         <div class="col-md-6">
           <blockquote class="blockquote border-start ps-4">
-            <p class="mb-2">"Asesor-IA Legal me ayudó a resolver mi caso rápidamente. ¡Muy recomendable!"</p>
+            <p class="cb1-text mb-2">"Asesor-IA Legal me ayudó a resolver mi caso rápidamente. ¡Muy recomendable!"</p>
             <footer class="blockquote-footer">Juan Pérez</footer>
           </blockquote>
         </div>
         <div class="col-md-6">
           <blockquote class="blockquote border-start ps-4">
-            <p class="mb-2">"Gracias a Asesor-IA, recibí la asesoría legal que necesitaba sin complicaciones."</p>
+            <p class="cb1-text mb-2">"Gracias a Asesor-IA, recibí la asesoría legal que necesitaba sin complicaciones."</p>
             <footer class="blockquote-footer">María López</footer>
           </blockquote>
         </div>
@@ -96,7 +96,7 @@
       </div>
   
       <div class="col-md-6 d-flex justify-content-center">
-        <div class="card shadow-sm" style="width: 22rem; border-radius: 12px; overflow: hidden;">
+        <div class="card shadow-sm cb2">
           <img 
             src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqVTDYk3uT9o7vDSCoLY74wTRfwq5Hd0XyP93qoXda_bSj2JoOe--8dVxKUIOodX6WX6-HGPEuOdEfEpIDwx0DwMnqCKwCHxPUB_SdBwm8Y15qTTjbaFzZzyjBIUhMllCWrVsPAMx51qUC4oCnm2ml5R8iNsKDMg41hGi9_ZGkFc-7JVJFOzFaBAe9/s587/saul-goodman.webp" 
             class="card-img-top" 
@@ -105,7 +105,7 @@
             <p class="card-text text-muted mb-4">
               ¿Quieres conocer a nuestros primeros abogados especialistas en asesoría civil?
             </p>
-            <a href="{{ url('/recomendacion/civil') }}" class="btn btn-outline-primary">
+            <a href="{{ url('/recomendacion/civil') }}" class="btn custom-button">
               Más Información
             </a>
           </div>

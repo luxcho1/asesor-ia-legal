@@ -1,15 +1,46 @@
 @extends('layouts.app')
 @section('content')
+@vite(['resources/css/nav-content.css'])
 <body>
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <h2 class="text-center mb-4">Registro de Abogados</h2>
+            <div class="col-lg-8 col-sm-10 col-12">
+                <div class="card mb-5">
+                    
+                        <h3 class="text-center mb-4">Unete a Nuestra Red de Abogados</h3>
+                        <p>En AsesorIA Legal, creemos en la colaboración entre profesionales legales y 
+                            tecnología avanzada para ofrecer el mejor servicio a nuestros usuarios. Al unirte
+                             a nuestra plataforma, tendrás acceso a una amplia gama de beneficios diseñados para impulsar 
+                             tu carrera y facilitar la conexión con clientes que necesitan tus servicios especializados.</p>
+                    
+                </div>
+                <div class="card mb-5">
+                    <h3 class="text-center mb-4 container">Ventajas de Ser Parte de AsesorIA Legal</h3>
+                        <div class="row">
+                            <div class="col-md-4 mb-2">
+                                <div class="card-2 h-100">
+                                <h4 class="text-center">Acceso a Base de Clientes</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <div class="card-2 h-100">
+                                    <h4 class="text-center">Herramienta de Gestion de Clientes</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <div class="card-2 h-100">
+                                    <h4 class="text-center">Flexibilidad y Autonomia</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+                <h1 class="text-center card-2">Registro de Abogados</h1>
                 <form method="POST" action="" enctype="multipart/form-data">
                     @csrf
 
                     <!-- Datos Personales -->
-                    <div class="card mb-4">
+                    <div class="card mt-5 mb-4">
                         <div class="card-header">Datos Personales</div>
                         <div class="card-body">
                             <div class="mb-3">
@@ -161,7 +192,7 @@
 
                     <!-- Botón de Enviar -->
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Registrar Abogado</button>
+                        <button type="submit" class="btn custom-button">Registrar Abogado</button>
                     </div>
                 </form>
             </div>
