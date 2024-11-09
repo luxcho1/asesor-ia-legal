@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @section('content')
+@vite(['resources/css/chats.css'])
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-lg-8 col-sm-10 col-12">
             <div class="card shadow-lg">
-                <div class="card-header bg-dark text-white text-center">
+                <div class="card-header text-center">
                     <h3>Chatbot de Asesoría central</h3>
                     <h6>El chatbot puede cometer errores, compruebe la informacion importante en la pagina de la bcn de chile en caso de cualquier duda con algun decreto o ley</h6>
                 </div>
@@ -28,12 +29,12 @@
                     <form action="{{ route('chatbot.central') }}" method="POST" class="d-flex">
                         @csrf
                         <input type="text" name="askText" class="form-control me-2" placeholder="Escribe tu mensaje..." required>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="submit" class="btn send-button">Enviar</button>
                     </form>
                 </div>
             </div>
             <div class="text-center mt-4">
-                <a class="btn btn-secondary" href="{{ url('/chatbot') }}" id="regresar" name="regresar">Volver a Inicio</a>
+                <a class="btn custom-button" href="{{ url('/chatbot') }}" id="regresar" name="regresar">Volver a Inicio</a>
             </div>
         </div>
     </div>

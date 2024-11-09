@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @section('content')
+@vite(['resources/css/chats.css'])
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-lg-8 col-sm-10 col-12">
             <div class="card shadow-lg">
-                <div class="card-header bg-dark text-white text-center">
+                <div class="card-header text-center">
                     <h3>Chatbot de Asesoría en Leyes civiles</h3>
                 </div>
                 <div id="chat-history" class="card-body chat-box" style="max-height: 300px; overflow-y: auto;">
@@ -33,12 +34,12 @@
                     <form action="{{ route('chatbot.civil') }}" method="POST" class="d-flex">
                         @csrf
                         <input type="text" name="askText" class="form-control me-2" placeholder="Escribe tu mensaje..." required>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="submit" class="btn send-button">Enviar</button>
                     </form>
                 </div>
             </div>
             <div class="text-center mt-4">
-                <a class="btn btn-secondary" href="{{ url('/chatbot') }}" id="regresar" name="regresar">Volver a Inicio</a>
+                <a class="btn custom-button" href="{{ url('/chatbot') }}" id="regresar" name="regresar">Volver a Inicio</a>
             </div>
 
             <div class="row justify-content-center" style="margin-top: 20px">
@@ -49,10 +50,10 @@
                           class="card-img-top" 
                           alt="Abogado Especialista">
                         <div class="card-body text-center">
-                            <p class="card-text text-muted mb-4">
+                            <p class="card-text mb-4">
                                 ¿Quieres conocer a nuestros primeros abogados especialistas en asesoría civil??
                             </p>
-                            <a href="{{ url('/recomendacion/civil') }}" class="btn btn-outline-primary">
+                            <a href="{{ url('/recomendacion/civil') }}" class="btn custom-button">
                                 Más Información
                             </a>
                         </div>

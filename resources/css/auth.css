@@ -1,0 +1,65 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    Color: #333;
+    background-color: #AC9C8D;
+  }
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.card{
+    background-color: #72383D;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color:#D9D9D9;
+}
+
+.card-header{
+    font-size: 1.4rem;
+}
+
+.btn-link {
+    color: #EFE9E1;
+}
+
+.btn-link:hover {
+    color: #D1C7BD; 
+    text-decoration: underline;
+}
+
+.form-check-input:checked {
+    background-color: #322D29; 
+    border-color: #322D29; 
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.2rem #322D29; 
+}
+
+.form-check-input {
+    border: 2px solid #322D29; 
+    border-radius: 0.25rem; 
+}
+
+.custom-button {
+    background-color: #D9D9D9; 
+    color: #322D29;
+    border: 2px solid #72383D; 
+  }
+  
+  .custom-button:hover {
+    background-color: #322D29; 
+    border-color: #D9D9D9; 
+    color: #D9D9D9;
+  }
+  
