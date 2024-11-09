@@ -1,0 +1,17 @@
+h5{
+    color: black;
+}
+
+.accordion-button{
+    background-color: #72383D;
+    color: #D9D9D9;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.accordion-collapse{
+        background-color: #D1C7BD;
+        color: #322D29;
+        font-family: 'Open Sans', sans-serif;   
+}
+
