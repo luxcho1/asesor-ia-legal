@@ -2,6 +2,7 @@ body{
     font-family: 'Open Sans', sans-serif;
     Color: #333;
     background-color: #AC9C8D;
+    
 }
 
   .card{
@@ -36,3 +37,73 @@ body{
     border-color: #D9D9D9; 
     color: #D9D9D9;
 }
+
+/* chatbot */
+/* Estilo para mensajes del usuario */
+/* Mensaje del usuario */
+.user-message {
+    background-color: #D9D9D9;
+    color: #000000;
+    padding: 10px 15px;
+    border-radius: 20px;
+    display: inline-block; /* Permite que el contenedor se ajuste al tamaño del texto */
+    max-width: 90%; /* Ajusta el ancho máximo para que no ocupe todo el espacio */
+    word-wrap: break-word;
+    white-space: pre-wrap; /* Permite saltos de línea y ajusta el texto */
+    font-size: 16px;
+    line-height: 1.4; /* Mejora la legibilidad */
+}
+
+/* Mensaje del chatbot */
+.bot-message {
+    /* background-color: #D9D9D9; */
+    color: #D9D9D9;
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 100%; /* Ajusta el ancho máximo */
+    white-space: pre-wrap;
+}
+
+/* Contenedor del historial de chat */
+#chat-history {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    max-height: 100vh; /* Ajustar al 100% del alto de la ventana */
+    overflow-y: hidden; /* Ocultar la barra de desplazamiento */
+    scrollbar-width: none; /* Ocultar barra de desplazamiento en Firefox */
+}
+
+/* Estilo adicional para ajustar el contenedor */
+.row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+/* #chat-history {
+    display: flex;
+    flex-direction: column;
+}
+
+#userMessage {
+    background-color: #D9D9D9;
+    color: #000000;
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 100%;
+    margin: 10px 0;
+    align-self: flex-end;
+}
+
+#botReply {
+    background-color: #D9D9D9;
+    color: #000000;
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 100%;
+    margin: 10px 0;
+    align-self: flex-start;
+} */
+

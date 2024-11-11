@@ -15,6 +15,9 @@ export default defineConfig({
                 'resources/js/chatbot.js',
                 'resources/css/chatbot.css',
 
+                'resources/js/chats.js',
+                'resources/css/chats.css',
+
                 'resources/css/auth.css',
                 'resources/css/chats.css',
                 'resources/css/nav-content.css',

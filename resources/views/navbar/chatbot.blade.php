@@ -16,7 +16,8 @@
                     <div class="card text-center shadow-sm">
                         <!-- Contenedor de imagen con proporción fija -->
                         <div class="image-container" style="width: 100%; height: 250px; overflow: hidden;">
-                            <img src="{{ asset('storage/chatbot/central.jpg') }}" class="img-fluid rounded mx-auto d-block" style="width: 100%; height: 100%; object-fit: cover;" alt="Chatbot Central">
+                            <img src="https://conexionlegal.com/wp-content/uploads/2022/12/En-que-casos-puede-recibir-asesoria-legal-gratis-por-parte-de-Conexion-Legal.jpg" class="img-fluid rounded mx-auto d-block" style="width: 100%; height: 100%; object-fit: cover;" alt="Chatbot Central">
+                            {{-- <img src="{{ asset('storage/chatbot/central.jpg') }}" class="img-fluid rounded mx-auto d-block" style="width: 100%; height: 100%; object-fit: cover;" alt="Chatbot Central"> --}}
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Chatbot Central</h5>
