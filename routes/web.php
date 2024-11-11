@@ -71,7 +71,7 @@ Route::get('/recomendacion/{especialidad}', [AbogadoController::class, 'filtrarP
 
 //Recomendacion de abogados
 Route::get('/recomendacion/civil', function () {return view('recomendacion-abogado.civil');});
-Route::get('/recomendacion/economica', function () {return view('recomendacion-abogado.economica');});
+Route::get('/recomendacion/economico', function () {return view('recomendacion-abogado.economica');});
 Route::get('/recomendacion/familiar', function () {return view('recomendacion-abogado.familiar');});
 Route::get('/recomendacion/laboral', function () {return view('recomendacion-abogado.laboral');});
 Route::get('/recomendacion/penal', function () {return view('recomendacion-abogado.penal');});

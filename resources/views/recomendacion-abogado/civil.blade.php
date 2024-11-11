@@ -1,5 +1,9 @@
 @extends('layouts.app')
 @section('content')
+@vite(['resources/js/home.js'])
+@vite(['resources/js/recomendacion-abogado.js'])
+
+
 <body>
 <div class="container">
     <div class="row" style="text-align: center">
@@ -26,13 +30,13 @@
                             <li><strong>Especialidad:</strong> {{ $abogado->especialidad }}</li>
                             <li><strong>Email:</strong> <a href="mailto:{{ $abogado->email }}">{{ $abogado->email }}</a></li>
                             <li><strong>Teléfono:</strong> +569 {{ $abogado->telefono }}</li>
-                            <li><strong>Sueldo:</strong> {{ $abogado->sueldo }}</li>
+                            {{-- <li><strong>Sueldo:</strong> {{ $abogado->sueldo }}</li> --}}
                         </ul>
                     
                     
                         
                         <div class="mb-3">
-                            <strong>Biografía:</strong> 
+                            <strong>Biografía</strong> 
                             <p class="card-text" style="text-align: justify;">
                                 {{ $abogado->biografia }}
                             </p>

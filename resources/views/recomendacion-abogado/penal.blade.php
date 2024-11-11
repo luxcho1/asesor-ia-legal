@@ -7,12 +7,12 @@
 <body>
 <div class="container">
     <div class="row" style="text-align: center">
-        <h1>Estos son nuestros abogados especialistas en Laboral</h1>
+        <h1>Estos son nuestros abogados especialistas en Penal</h1>
     </div>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         @foreach ($abogados as $abogado)
-            @if ($abogado->especialidad === 'Laboral')
+            @if ($abogado->especialidad === 'Penal')
 
             <div class="col d-flex">
                 <div class="card h-100 w-100 text-center">
@@ -57,7 +57,7 @@
     </div>
     <div class="row">
         <div class="col-12 text-center mt-4">
-            <a href="{{ url('/chatbot/laboral') }}" class="btn btn-warning btn-lg">Regresar al chatbot</a>
+            <a href="{{ url('/chatbot/penal') }}" class="btn btn-warning btn-lg">Regresar al chatbot</a>
         </div>
     </div>
 </div>

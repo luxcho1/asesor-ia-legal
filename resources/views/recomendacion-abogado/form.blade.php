@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@vite(['resources/js/home.js'])
 
 <div class="container">
         @if(session('success'))
