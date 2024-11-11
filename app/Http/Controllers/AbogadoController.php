@@ -94,7 +94,7 @@ class AbogadoController extends Controller
      */
     public function edit($id)
     {
-        $Abogado = Cliente::findOrFail($id);
+        $Abogado = Abogado::findOrFail($id);
         return view('abogados.editar', compact('abogado'));
     }
 

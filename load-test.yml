@@ -1,0 +1,28 @@
+config:
+  target: 'http://127.0.0.1:8000' # Cambia esto a la URL de tu aplicación
+  phases:
+    - duration: 60
+      arrivalRate: 500 # 500 usuarios por minuto
+scenarios:
+  - flow:
+      - post:
+          url: "/register"
+          json:
+            name: "Test User {{ $loopElement }}"
+            email: "testuser{{ $loopElement }}@example.com"
+            password: "password{{ $loopElement }}"
+            password_confirmation: "password{{ $loopElement }}"
+      - get:
+          url: "/chatbot/central"
+      - get:
+          url: "/chatbot/familiar"
+      - get:
+          url: "/chatbot/civil"
+      - get:
+          url: "/chatbot/economico"
+      - get:
+          url: "/chatbot/laboral"
+      - get:
+          url: "/chatbot/penal"
+      - get:
+          url: "/chatbot/tributario"

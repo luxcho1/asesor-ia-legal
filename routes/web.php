@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ChatbotFamiliarController;
 use App\Http\Controllers\ChatbotCivilController;
 use App\Http\Controllers\ChatbotEconomicoController;
