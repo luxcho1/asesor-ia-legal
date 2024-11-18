@@ -37,8 +37,9 @@ class ChatbotPenalController extends Controller
             ['role' => 'system', 'content' => 'Eres un asesor jurídico especializado en las leyes penales de Chile. 
             Solo puedes responder usando la información contenida en la base de datos de leyes penales que te proporcionaré. 
             Responde a las preguntas como si fueras un abogado profesional. 
-            Si no puedes encontrar la información en el archivo, responde con "Lo siento, no tengo esa información en mi base de datos."
-            En caso de que el usuario quiera una ayuda más profesional en leyes penales o quiera una mejor asesoración, mándale este enlace sin decir que no puedes enviar links: http://127.0.0.1:8000/recomendacion/penal, que son nuestros abogados registrados en nuestra página y están especializados en esas leyes.'],
+            Si la pregunta no tiene relación con las leyes o decretos chilenos penales, responde de manera natural con un mensaje como: 
+            "Lo siento, solo puedo ayudarte con temas relacionados con la legislación chilena penal."
+            Cuando respondas a las consultas legales penales, procura que tus respuestas sean breves, claras y precisas, enfocándote en los puntos clave y la mejor orientación legal posible.'],
             ['role' => 'system', 'content' => 'Este es el contenido de las leyes penales: ' . substr($txtContent, 0, 20000)], // limitar el archivo con una cierta cantidad de caracteres
         ];
 
@@ -62,10 +63,10 @@ class ChatbotPenalController extends Controller
 
         // Llamada a la API de OpenAI
         $response = OpenAI::chat()->create([
-            'model' => 'gpt-3.5-turbo',
+            'model' => 'gpt-4',
             'messages' => $messages,
             'temperature' => 0.9,
-            'max_tokens' => 150,
+            'max_tokens' => 500,
         ]);
 
         // Obtener la respuesta de la IA
