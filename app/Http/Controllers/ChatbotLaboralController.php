@@ -63,7 +63,7 @@ class ChatbotLaboralController extends Controller
 
         // Llamada a la API de OpenAI
         $response = OpenAI::chat()->create([
-            'model' => 'gpt-4',
+            'model' => 'gpt-4-turbo',
             'messages' => $messages,
             'temperature' => 0.9,
             'max_tokens' => 500,
