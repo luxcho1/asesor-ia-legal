@@ -64,7 +64,7 @@
             <i class="bi bi-chevron-right icono"></i> Derecho Familiar
           </li>
           <li class="mb-2">
-            <i class="bi bi-chevron-right icono"></i> Derecho Corporativo
+            <i class="bi bi-chevron-right icono"></i> Derecho Economico
           </li>
         </ul>
       </div>
@@ -88,34 +88,5 @@
       </div>
     </div>
   </div>
-  
-
-  <div class="container py-5">
-    <div class="row align-items-center">
-      <div class="col-md-3">
-      </div>
-  
-      <div class="col-md-6 d-flex justify-content-center">
-        <div class="card shadow-sm cb2">
-          <img 
-            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqVTDYk3uT9o7vDSCoLY74wTRfwq5Hd0XyP93qoXda_bSj2JoOe--8dVxKUIOodX6WX6-HGPEuOdEfEpIDwx0DwMnqCKwCHxPUB_SdBwm8Y15qTTjbaFzZzyjBIUhMllCWrVsPAMx51qUC4oCnm2ml5R8iNsKDMg41hGi9_ZGkFc-7JVJFOzFaBAe9/s587/saul-goodman.webp" 
-            class="card-img-top" 
-            alt="Abogado Especialista">
-          <div class="card-body text-center">
-            <p class="card-text text-muted mb-4">
-              ¿Quieres conocer a nuestros primeros abogados especialistas en asesoría civil?
-            </p>
-            <a href="{{ url('/recomendacion/civil') }}" class="btn custom-button">
-              Más Información
-            </a>
-          </div>
-        </div>
-      </div>
-  
-      <div class="col-md-3">
-      </div>
-    </div>
-  </div>
-  
 </body>
 @endsection

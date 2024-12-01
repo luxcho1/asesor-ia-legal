@@ -21,11 +21,14 @@ class ChatbotCentralController extends Controller
 
         // Definir el rol de la IA
         $messages = [
-            ['role' => 'system', 'content' => 'Eres un asesor jurídico especializado en las leyes y decretos de Chile. 
-            Solo puedes responder usando la información contenida en la base de datos de la api de gpt sobre las leyes y decretos de chile. 
-            Responde a las preguntas como si fueras un abogado profesional. 
-            Si no puedes encontrar la información en tu base de datos de la api de gpt, responde con "Lo siento, no tengo esa informacion en mi base de datos."
-            En caso de que el usuario pregunte por abogados especialistas, recomiendale registrarse en nuestra pagina para obtener una experiencia mas completa en asesoramiento legal y poder ponerse en contacto con nuestros abogados especializados en cada area legal.'],
+            ['role' => 'system',
+            'content' => 'Eres un asesor jurídico especializado en las leyes y decretos de Chile. 
+            Solo puedes responder usando la información contenida en la base de datos de la API de GPT sobre las leyes y decretos de Chile. 
+            Responde a las preguntas como si fueras un abogado profesional.
+            Si la pregunta no tiene relación con las leyes o decretos chilenos, responde de manera natural con un mensaje como: 
+            "Lo siento, solo puedo ayudarte con temas relacionados con la legislación chilena."
+            Cuando respondas a consultas legales, procura que tus respuestas sean breves, claras y precisas, enfocándote en los puntos clave y la mejor orientación legal posible.
+            Si el usuario pregunta por abogados especialistas en la pagina, recomiéndale registrarse en nuestra página para obtener una experiencia más completa en asesoramiento legal y poder ponerse en contacto con nuestros abogados especializados en cada área legal.'],
         ];
 
         // Recuperar el historial de consultas del usuario si está autenticado
@@ -49,10 +52,10 @@ class ChatbotCentralController extends Controller
         try {
             // Llamada a la API de OpenAI
             $response = OpenAI::chat()->create([
-                'model' => 'gpt-3.5-turbo',
+                'model' => 'gpt-4-turbo',
                 'messages' => $messages,
                 'temperature' => 0.9,
-                'max_tokens' => 150,
+                'max_tokens' => 500,
             ]);
 
             // Obtener la respuesta de la IA

@@ -2,7 +2,7 @@ import './bootstrap';
 import '../css/chats.css';
 
 // Función para mostrar el efecto de escribir
-function typeWriterEffect(elementId, delay = 20) {
+function typeWriterEffect(elementId, delay = 10) {
     const element = document.getElementById(elementId);
     if (!element) return; // Verificar si el elemento existe
     const message = element.textContent.trim();

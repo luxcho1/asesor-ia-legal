@@ -125,7 +125,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Asesoría Economica</h5>
-                            <p class="card-text">Recibe apoyo para resolver conflictos familiares, como divorcios, custodia de hijos y pensión alimenticia.</p>
+                            <p class="card-text">Recibe orientación en leyes economica en temas de impuestos, renta, bonos, fiscalizaciones a productos, entre otros temas.</p>
                             <a href="{{ url('/chatbot/economica') }}" class="btn custom-button">Ir al Chatbot</a>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Asesoría Laboral</h5>
-                            <p class="card-text">Recibe apoyo para resolver conflictos familiares, como divorcios, custodia de hijos y pensión alimenticia.</p>
+                            <p class="card-text">Recibe orientacion en leyes laborales como seguros de trabajo, pago de finiquitos, fiscalizaciones, entre otros temas.</p>
                             <a href="{{ url('/chatbot/laboral') }}" class="btn custom-button">Ir al Chatbot</a>
                         </div>
                     </div>
